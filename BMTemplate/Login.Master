@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="BMTemplate.Login" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Styles/BMStyles.css" rel="stylesheet" type="text/css" />
+      <link href="Styles/AdminStyle.css" rel="Stylesheet" type ="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div class="content-wrapper">
+                <div class="logo-wrapper">
+                    <div class="logo">
+                           <img src="Images/vms_Logo.png" alt="Vehicle Management Logo." />
+                    </div>
+                    <div class="system-name" style=" background-image:url(/Images/BM_Image_03.jpg);float:left;margin-top:38px;">
+                        <p style="margin: auto 25px auto auto; font-weight: bold; font-size:x-large">VMS</p>
+                        <p style="margin: 5px 25px auto auto; font-size: smaller; font-weight: bold">Vehicle Management System</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="body">  
+            <div class="content-wrapper main-content">
+                
+               <ul id="menu" style="Height:40px">
+    
+                </ul>   
+                
+                
+                
+                <%--<div class="clear hideSkiplink"  style ="border-radius:5px ;background-color:#4D4D4D ;border: 1px solid black;" >
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" BackColor="#4D4D4D" >
+                        <Items>
+                        </Items>                 
+                    </asp:Menu>
+                </div>--%>
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" >
+                
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <footer>
+            <div class="content-wrapper ">
+                <div class="footer-div" style="background-image: url(../Images/BM_Footer.jpg);border-radius : 5px;text-align:center;">
+                    <p><b>&copy; <%: DateTime.Now.Year %> Government Central Fleet Management</b></p>
+                </div>
+            </div>
+        </footer>
+    </form>
+
+</body>
+</html>

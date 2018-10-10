@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A223CB2E-2A9C-4F46-A442-1504CFBAE4AC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BMTemplate</RootNamespace>
+    <AssemblyName>BMTemplate</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Report.Viewer.12.0.0.0\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Report.Viewer.12.0.0.0\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AccidentsUpdateList.aspx" />
+    <Content Include="assets\js\pagination.css" />
+    <Content Include="assets\js\pagination.js" />
+    <Content Include="assets\js\pagination.min.js" />
+    <Content Include="TripsVehicleAllocated.aspx" />
+    <Content Include="AccidentDetails.aspx" />
+    <Content Include="VehicleMaintDetails.aspx" />
+    <Content Include="GarageCardDetails.aspx" />
+    <Content Include="GarageCardUpdateList.aspx" />
+    <Content Include="TripsHistory.aspx" />
+    <Content Include="Images\load.gif" />
+    <Content Include="Images\NewlogoA33002.png" />
+    <Content Include="Images\NewlogoA3300dpi.jpg" />
+    <Content Include="Images\New logo A3 300 dpi.png" />
+    <Content Include="Images\New logo A3 600 dpi.jpg" />
+    <Content Include="Images\New logo A3 600 dpi.png" />
+    <Content Include="Images\NewlogoStatsa3.png" />
+    <Content Include="Images\Statsa_Logo_300_132.png" />
+    <Content Include="Images\VMS_Landing.jpg" />
+    <Content Include="Jquery2\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Jquery2\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Jquery2\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Jquery2\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Jquery2\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Jquery2\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Jquery2\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Jquery2\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Jquery2\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Jquery2\images\ui-icons_222222_256x240.png" />
+    <Content Include="Jquery2\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Jquery2\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Jquery2\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Jquery2\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Jquery2\jquery-ui.css" />
+    <Content Include="Jquery2\jquery-ui.js" />
+    <Content Include="Jquery2\jquery.smartmenus.min.js" />
+    <Content Include="TripsAvailableVehicles.aspx" />
+    <Content Include="ReportView.aspx" />
+    <Content Include="TripAuthoritySlip.aspx" />
+    <Content Include="Styles\AdminStyle.css" />
+    <Content Include="Styles\AppleStyle.css" />
+    <Content Include="Styles\menu.css" />
+    <Content Include="Styles\sm-blue.css" />
+    <Content Include="Styles\sm-clean.css" />
+    <Content Include="Styles\sm-core-css.css" />
+    <Content Include="Styles\sm-simple.css" />
+    <Content Include="UsersUpdateList.aspx" />
+    <Content Include="VehiclesDeleteList.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="TripAuthorisation.aspx" />
+    <Content Include="DriversDeleteList.aspx" />
+    <Content Include="DriversUpdateList.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\010_trash-2-32.png" />
+    <Content Include="Images\1car_wheel-64.png" />
+    <Content Include="Images\Admin %281%29.png" />
+    <Content Include="Images\arrow-back-32.png" />
+    <Content Include="Images\binoculars_32.png" />
+    <Content Include="Images\CabrioletRed.png" />
+    <Content Include="Images\Calendar4.png" />
+    <Content Include="Images\Capture Vehicle.png" />
+    <Content Include="Images\card_back_.png" />
+    <Content Include="Images\Car_Maintenance_2-128.png" />
+    <Content Include="Images\database_add-234.png" />
+    <Content Include="Images\arrow-back-32-256x256x4.png" />
+    <Content Include="Images\arrow-back-32-32x32x32.png" />
+    <Content Include="Images\arrow-back-32-48x48x32.png" />
+    <Content Include="Images\arrow-small-outline-right.jpg" />
+    <Content Include="Images\Authorisetrip.png" />
+    <Content Include="Images\back-32.png" />
+    <Content Include="Images\BM_Footer.jpg" />
+    <Content Include="Images\BM_Header.jpg" />
+    <Content Include="Images\BM_Image_01.jpg" />
+    <Content Include="Images\BM_Image_02.jpg" />
+    <Content Include="Images\BM_Image_03.jpg" />
+    <Content Include="Images\calender.png" />
+    <Content Include="Images\Caraccident.png" />
+    <Content Include="Images\car_key_driver.png" />
+    <Content Include="Images\custom-reports.png" />
+    <Content Include="Images\database_add.png" />
+    <Content Include="Images\database_addplusSave.PNG" />
+    <Content Include="Images\driver-32.png" />
+    <Content Include="Images\exchange-32_update.PNG" />
+    <Content Include="Images\FleetAdministrator.jpg" />
+    <Content Include="Images\Fleet_officer.png" />
+    <Content Include="Images\FlleetOfficerdialog.jpg" />
+    <Content Include="Images\Heading.jpg" />
+    <Content Include="Images\loader.gif" />
+    <Content Include="Images\loginButton.png" />
+    <Content Include="Images\logo_centered.png" />
+    <Content Include="Images\Main image- vehicle4.jpg" />
+    <Content Include="Images\Officer-32.png" />
+    <Content Include="Images\Petrol-Station-64.png" />
+    <Content Include="Images\player_play.png" />
+    <Content Include="Images\PPI_Slider-image.png" />
+    <Content Include="Images\RegisterVehiclehatchback-128.png" />
+    <Content Include="Images\remove-from-database.png" />
+    <Content Include="Images\SAVEBUTTON.bmp" />
+    <Content Include="Images\SAVEBUTTON3.bmp" />
+    <Content Include="Images\search_button_green.png" />
+    <Content Include="Images\speedometer.png" />
+    <Content Include="Images\SyncUpdate.PNG" />
+    <Content Include="Images\SyncUpdate1.PNG" />
+    <Content Include="Images\testimonials.png" />
+    <Content Include="Images\Tripaddentry.png" />
+    <Content Include="Images\Update database_refresh.png" />
+    <Content Include="Images\update.png" />
+    <Content Include="Images\UpdateDB.bmp" />
+    <Content Include="Images\user_delete.png" />
+    <Content Include="Images\steeringWheel.png" />
+    <Content Include="Images\VMSFinal3.PNG" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Jquery2\css\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Jquery2\css\ui-lightness\jquery-ui-1.9.2.custom.css" />
+    <Content Include="Jquery2\css\ui-lightness\jquery-ui-1.9.2.custom.min.css" />
+    <Content Include="Jquery2\index.html" />
+    <Content Include="Jquery2\js\Float.js" />
+    <Content Include="Jquery2\js\jquery-1.4.1.min.js" />
+    <Content Include="Jquery2\js\jquery-1.8.3.js" />
+    <Content Include="Jquery2\js\jquery-ui-1.9.2.custom.js" />
+    <Content Include="Jquery2\js\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="TripLogs.aspx" />
+    <Content Include="VehicleMaintsUpdateList.aspx" />
+    <Content Include="TripClosure.aspx" />
+    <Content Include="TripPassengers.aspx" />
+    <Content Include="Reports.aspx" />
+    <Content Include="LoginScreen.aspx" />
+    <Content Include="VehicleDetails.aspx" />
+    <Content Include="DriverDetails.aspx" />
+    <Content Include="Styles\BMStyles.css" />
+    <Content Include="Report.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Styles\VMS.css" />
+    <Content Include="UserDetails.aspx" />
+    <Content Include="AccidentsAddList.aspx" />
+    <Content Include="VehiclesUpdateList.aspx" />
+    <Content Include="TripHistoryDetails.aspx" />
+    <Content Include="VMSModel.Context.tt">
+      <DependentUpon>VMSModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VMSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="VMSModel.edmx.diagram">
+      <DependentUpon>VMSModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="VMSModel.tt">
+      <DependentUpon>VMSModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VMSModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="VMSReports.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accident.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccidentsUpdateList.aspx.cs">
+      <DependentUpon>AccidentsUpdateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccidentsUpdateList.aspx.designer.cs">
+      <DependentUpon>AccidentsUpdateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationSetting.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditTrail.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Driver.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EngineCapicity.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\RoleNames.cs" />
+    <Compile Include="Enums\ServiceTypes.cs" />
+    <Compile Include="Extensions\Trip.cs" />
+    <Compile Include="FuelType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GarageCard.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OffenceType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Office.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Passenger.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Province.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\BusinessException.cs" />
+    <Compile Include="Repositories\EmailRepository.cs" />
+    <Compile Include="Responsibility.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trip.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TripLog.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TripOffence.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TripsVehicleAllocated.aspx.cs">
+      <DependentUpon>TripsVehicleAllocated.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripsVehicleAllocated.aspx.designer.cs">
+      <DependentUpon>TripsVehicleAllocated.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicle.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleMaintDetails.aspx.cs">
+      <DependentUpon>VehicleMaintDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehicleMaintDetails.aspx.designer.cs">
+      <DependentUpon>VehicleMaintDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CurrentUser.cs" />
+    <Compile Include="Enums\OfficeTypes.cs" />
+    <Compile Include="Enums\Pages.cs" />
+    <Compile Include="Enums\SelectedValues.cs" />
+    <Compile Include="Extensions\ActionCodeToName.cs" />
+    <Compile Include="Extensions\OfficesToIds.cs" />
+    <Compile Include="TripsAvailableVehicles.aspx.cs">
+      <DependentUpon>TripsAvailableVehicles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripsAvailableVehicles.aspx.designer.cs">
+      <DependentUpon>TripsAvailableVehicles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportView.aspx.cs">
+      <DependentUpon>ReportView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportView.aspx.designer.cs">
+      <DependentUpon>ReportView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TripAuthoritySlip.aspx.cs">
+      <DependentUpon>TripAuthoritySlip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripAuthoritySlip.aspx.designer.cs">
+      <DependentUpon>TripAuthoritySlip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\DriverRepository.cs" />
+    <Compile Include="Repositories\OfficeRepository.cs" />
+    <Compile Include="Repositories\StatusRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Enums\STATUS.cs" />
+    <Compile Include="UsersUpdateList.aspx.cs">
+      <DependentUpon>UsersUpdateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsersUpdateList.aspx.designer.cs">
+      <DependentUpon>UsersUpdateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report.Master.cs">
+      <DependentUpon>Report.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report.Master.designer.cs">
+      <DependentUpon>Report.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleMaintenance.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleMaintsUpdateList.aspx.cs">
+      <DependentUpon>VehicleMaintsUpdateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehicleMaintsUpdateList.aspx.designer.cs">
+      <DependentUpon>VehicleMaintsUpdateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\AddResult.cs" />
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccidentDetails.aspx.cs">
+      <DependentUpon>AccidentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccidentDetails.aspx.designer.cs">
+      <DependentUpon>AccidentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GarageCardDetails.aspx.cs">
+      <DependentUpon>GarageCardDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GarageCardDetails.aspx.designer.cs">
+      <DependentUpon>GarageCardDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GarageCardUpdateList.aspx.cs">
+      <DependentUpon>GarageCardUpdateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GarageCardUpdateList.aspx.designer.cs">
+      <DependentUpon>GarageCardUpdateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TripsHistory.aspx.cs">
+      <DependentUpon>TripsHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripsHistory.aspx.designer.cs">
+      <DependentUpon>TripsHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleMake.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleModel.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehiclesDeleteList.aspx.cs">
+      <DependentUpon>VehiclesDeleteList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehiclesDeleteList.aspx.designer.cs">
+      <DependentUpon>VehiclesDeleteList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TripAuthorisation.aspx.cs">
+      <DependentUpon>TripAuthorisation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripAuthorisation.aspx.designer.cs">
+      <DependentUpon>TripAuthorisation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DriversDeleteList.aspx.cs">
+      <DependentUpon>DriversDeleteList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DriversDeleteList.aspx.designer.cs">
+      <DependentUpon>DriversDeleteList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DriversUpdateList.aspx.cs">
+      <DependentUpon>DriversUpdateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DriversUpdateList.aspx.designer.cs">
+      <DependentUpon>DriversUpdateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TripLogs.aspx.cs">
+      <DependentUpon>TripLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripLogs.aspx.designer.cs">
+      <DependentUpon>TripLogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.Master.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.Master.designer.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\Messages.cs" />
+    <Compile Include="TripClosure.aspx.cs">
+      <DependentUpon>TripClosure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripClosure.aspx.designer.cs">
+      <DependentUpon>TripClosure.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\OperationMode.cs" />
+    <Compile Include="TripPassengers.aspx.cs">
+      <DependentUpon>TripPassengers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripPassengers.aspx.designer.cs">
+      <DependentUpon>TripPassengers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\AccidentRepository.cs" />
+    <Compile Include="Repositories\BankRepository.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\GarageCardRepository.cs" />
+    <Compile Include="Repositories\MaintananceRepository.cs" />
+    <Compile Include="Repositories\ReportRepository.cs" />
+    <Compile Include="Repositories\TripRepository.cs" />
+    <Compile Include="Repositories\VehicleRepository.cs" />
+    <Compile Include="LdapAuthentication.cs" />
+    <Compile Include="LoginScreen.aspx.cs">
+      <DependentUpon>LoginScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginScreen.aspx.designer.cs">
+      <DependentUpon>LoginScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehicleDetails.aspx.cs">
+      <DependentUpon>VehicleDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehicleDetails.aspx.designer.cs">
+      <DependentUpon>VehicleDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DriverDetails.aspx.cs">
+      <DependentUpon>DriverDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DriverDetails.aspx.designer.cs">
+      <DependentUpon>DriverDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserDetails.aspx.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserDetails.aspx.designer.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AccidentsAddList.aspx.cs">
+      <DependentUpon>AccidentsAddList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccidentsAddList.aspx.designer.cs">
+      <DependentUpon>AccidentsAddList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VehiclesUpdateList.aspx.cs">
+      <DependentUpon>VehiclesUpdateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehiclesUpdateList.aspx.designer.cs">
+      <DependentUpon>VehiclesUpdateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TripHistoryDetails.aspx.cs">
+      <DependentUpon>TripHistoryDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripHistoryDetails.aspx.designer.cs">
+      <DependentUpon>TripHistoryDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleManagementEntity.cs" />
+    <Compile Include="VehicleType.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VMSModel.Context.cs">
+      <DependentUpon>VMSModel.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="VMSModel.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="VMSModel.Designer.cs">
+      <DependentUpon>VMSModel.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="VMSReports.aspx.cs">
+      <DependentUpon>VMSReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VMSReports.aspx.designer.cs">
+      <DependentUpon>VMSReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow.cs">
+      <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin.Master" />
+    <Content Include="Report.Master" />
+    <None Include="Jquery2\Thumbs.db" />
+    <Content Include="Login.Master" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="VMSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VMSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3946</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

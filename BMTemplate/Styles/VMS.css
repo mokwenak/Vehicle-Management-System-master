@@ -1,0 +1,103 @@
+﻿.Normaltable {
+    border-collapse: collapse;
+    padding: 3px;
+	margin-right: 0px;
+	
+}
+
+.Normaltable .LabelColumn{
+    width: 210px;
+}
+
+.Normaltable .FieldColumn{
+    width: 250px;
+}
+
+
+.Normaltable th, td {
+    padding: 7px; 
+}
+
+.NormalText {
+    border-collapse: collapse; 
+}
+
+.SmallFie
+ld
+{
+	width:150px;
+}
+
+.MediumField
+{
+	width:200px;
+}
+
+.LargeField
+{
+	width:280px;
+}
+
+.XLargeField
+{
+	width:420px;
+}
+
+.PageTitle
+{
+	text-align:left;
+	margin-left: 0px;
+}
+
+.dialogTitleClass .ui-dialog-titlebar {
+    background:#7c7d7d;
+} 
+
+.legend
+{
+ width:100%;	
+}
+
+.GridTable
+{
+	color: #033333;
+	border-collapse: collapse;
+	}
+
+.GridTable > tbody > tr:nth-child(odd)
+{
+	background-color:#E3EAEB;
+}
+
+.GridTable > tbody > tr:first-child
+{
+	color:White;
+	background-color:#4D4D4D;
+	font-weight:bold;
+	height:25px;
+}
+
+.GridTable > tbody > tr > td > a
+{
+	text-decoration: none;
+	color: #0000ff;
+}
+
+.GridTable > tbody > tr > td > a:hover
+{
+	text-decoration: underline;
+	color: #0000ff;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.NormalPanel
+{
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px #888888;
+}
+
+.DateField
+{
+
+}

@@ -1,0 +1,449 @@
+﻿.HeaderDescription 
+{
+background-image: url(Images/BM_Image_03.jpg);
+}
+
+body
+{
+    background-color: #c8c9cb;
+    font-family:"Estrangelo Edessa";
+}
+
+.Page
+{    
+    background-color: white;
+    border-width:3%;
+    border-color:#b6b7bc;
+    margin:0% 10% 0px 10%;
+    border-style:solid;
+    width:1000px; 
+    margin-left:auto;
+    margin-right:auto;
+    
+	
+}
+
+.Button
+{
+    border-radius:7px;
+    color:Black;
+    background-color:White;  
+    margin-left:0px;  
+}
+
+.Cont
+{
+    margin: 1%;    
+}
+
+.Header
+{
+    background: white url("../Pics/BM_Header.jpg");
+    background-repeat:no-repeat;
+    height:4em;
+    height:80px;
+}
+
+.H_Side
+{
+    background: white url("../Pics/BM_Image_03.jpg");
+    height:4em;
+    width:198px;
+    float:right; 
+}
+
+.H_Head2
+{
+    margin-left:1em;
+    line-height:10%;    
+}
+
+
+
+.Login_M
+{
+    background-color:#F9F9F9;
+    background-position:center;
+    height:12em;    
+}
+
+.BM
+{
+    background: #F9F9F9 url("../Pics/BM_Image_02.jpg");
+    width:30.2%;
+    height:2.8em;
+    background-color:White;
+    margin-left:50px;
+    margin-top: 100px;
+    float:left;
+}
+
+.Log
+{
+    width:45%;
+    height:3.5em;
+    background-color:#636363;
+    margin-right:50px;
+    margin-top: 90px; 
+    float:right;
+    border-radius: 7px; 
+}
+
+.DivLog
+{
+    width:1px;
+    height:2em;
+    background-color:white;
+    margin-top:10px;
+    margin-right:10px;
+    float:left; 
+}
+
+.Usr
+{
+    float:left;
+    margin-left: 10px;
+    width:40%; 
+    margin-top:2px;    
+}
+
+.LogPic
+{
+        margin-top:14px;
+    }
+
+#txtUser
+{
+    width:88%;
+    border-radius:5px;
+    margin-top:10px;      
+}
+
+.Pswd
+{
+    width:40%; 
+    margin-top:2px;
+    margin-left:0px; 
+    float:left;       
+}
+
+#txtPswd
+{
+   
+    width:88%;
+    border-radius:5px; 
+    margin-top:10px; 
+}
+
+.MainPic
+{
+   background: white url("../Pics/BM_Image_01.jpg"); 
+   background-repeat:no-repeat;
+   background-position:center;
+   background-size:cover;
+   height: 250px; 
+   margin-bottom:5px;
+    
+   behavior: url("../PIE-1.0.0/PIE.htc");  
+}
+
+.Space
+{
+    height: 110px;
+    background: #F9F9F9; 
+    margin-bottom: 4px;       
+}
+
+.Footer
+{
+    background: white url("../Pics/BM_Footer.jpg");
+    height: 30px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    z-index: -1;
+}
+
+.Foo
+{
+    color: #4f4f4f;
+    text-align:center;
+    vertical-align:middle;          
+}
+
+#SiteMenu
+{
+    margin-top:auto;
+    margin-bottom:auto;    
+}
+
+#LogID, #HeadLoginView
+{
+    float:right; 
+    width:auto;   
+}
+
+html {    
+    margin: 0;
+    padding:25px;
+}
+
+body {
+    background-color: #fff;   
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    
+
+}
+
+
+/* main layout
+----------------------------------------------------------*/
+
+
+header, hgroup,
+nav, section {
+    display: block;
+}
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+
+.logo-wrapper {
+  overflow: hidden;
+            text-align: left;
+            margin: 0px auto;
+            padding: 0px;        
+            width: 99%;
+}
+
+.logo {
+   
+     float: left;
+     width:70%;
+}
+.system-name 
+{
+ back
+
+input[type="text"] {
+    display: block;
+    float: left;
+    text-align: left;   
+    margin: 0px;
+}
+
+
+
+
+ font-size:larger;
+font-weight:bold;
+}
+
+input[type="text"] {
+    display: block;
+    float: left;
+    text-align: left;   
+    margin: 0px;
+} 
+.left {
+    float:left;
+}
+.right {
+    float:right;
+}
+
+.main-content {
+  
+    padding-top: 30px;
+}
+
+
+div.hideSkiplink
+{
+    background-color:#4D4D4D;
+    width:100%;
+	height: 39px;
+	
+}
+
+div.menu
+{
+    padding: 4px 0px 4px 8px;
+}
+
+div.menu ul
+{
+    background-color:#7c7d7d;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+   
+}
+
+div.menu ul li a, div.menu ul li a:visited
+{
+    background-color:#7c7d7d;
+    /*border: 1px #4e667d solid;*/
+    color: #dde4ec;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu ul li a:hover
+{
+    background-color: #dfe5eb;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu ul li a:active
+{
+    background-color: #465c71;
+    color: white;
+    text-decoration: none;
+}
+.Cont
+{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:3em;
+    width:100%;
+    height:auto;
+    /*border:2px solid black;*/   
+}
+
+.Details
+{
+    /*border:1px solid black;*/
+    width:80%;
+    height:10em;
+    border-radius:7px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:3em;
+    
+    background: -moz-linear-gradient(top,  rgba(52,52,52,0.95) 58%, rgba(52,52,52,0.65) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(58%,rgba(52,52,52,0.95)), color-stop(100%,rgba(52,52,52,0.65))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2343434', endColorstr='#a6343434',GradientType=0 ); /* IE6-9 */    
+}
+
+.Gridhead
+{
+    background: -moz-linear-gradient(top,  rgba(52,52,52,0.95) 58%, rgba(52,52,52,0.65) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(58%,rgba(52,52,52,0.95)), color-stop(100%,rgba(52,52,52,0.65))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(52,52,52,0.95) 58%,rgba(52,52,52,0.65) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2343434', endColorstr='#a6343434',GradientType=0 ); /* IE6-9 */         
+}
+
+
+/*Menu Tabs */
+
+
+.TabList
+{
+    list-style-type:none;
+    height:2em;
+    padding:0;
+    margin:0;        
+}
+
+.TabList li
+{
+    float:left;
+    margin-right:0.3em;
+}
+
+.TabList li a
+{
+    display:block;
+    padding:0 0.5em;
+	border: 2px solid #f2343434;
+    font:bold 0.88em/2em arial,geneva,helvetica,sans-serif;
+	color:#000; 
+	background-color:#ccc; 
+	border-radius: 7px 7px 0 0;
+	text-decoration:none;     
+}
+
+.TabList li a:hover
+{
+    color: White;
+    background-color:#3E3E3E;
+    font-size:small;
+    font-weight:bold; 
+    text-decoration:underline;       
+}
+
+/*.TabList li a:active*/
+
+.active
+{
+    color: Green;
+    background-color:Red;
+    font-size:small;
+    font-weight:bold;        
+}
+
+.GridView
+{
+    margin-left:auto;
+    margin-right:auto;    
+}
+
+.Linkbtn 
+{
+color:Black
+}
+.txtBoxroundcorner
+{
+  -webkit-border-radius:24px;  
+  -moz-border-radius:24px;  
+   border-radius:24px;  
+
+}
+.main
+{
+    padding: 0px 12px;
+    margin: 12px 8px 8px 8px;
+    min-height: 420px;
+}
+.loginviewalignment
+{
+ border-radius: 10px; /*To make the corners rounded in IE*/
+ -moz-border-radius: 10px;/*this is for mozilla*/
+-webkit-border-radius: 10px; /*chrome and other browsers*/	
+
+}
+.loginDisplay
+{
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    color: White;
+    float:right;
+    border-radius: 10px; /*To make the corners rounded in IE*/
+    -moz-border-radius: 10px;/*this is for mozilla*/
+    -webkit-border-radius: 10px; /*chrome and other browsers*/
+}
+.RadioListTextAlign 
+{
+  float:left;	
+}

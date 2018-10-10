@@ -1,0 +1,1943 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Vehicle_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accidents">
+          <Key>
+            <PropertyRef Name="AccidentId" />
+          </Key>
+          <Property Name="AccidentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TripId" Type="bigint" Nullable="false" />
+          <Property Name="AccidentDescription" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CaseNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+          <Property Name="AccidentDate" Type="date" Nullable="false" />
+          <Property Name="AccidentLocation" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditTrail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RevisionStamp" Type="datetime" Nullable="false" />
+          <Property Name="EntityName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EntityKey" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Action" Type="varchar" MaxLength="1" />
+          <Property Name="OldData" Type="varchar(max)" />
+          <Property Name="NewData" Type="varchar(max)" />
+          <Property Name="ChangedColumns" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="BankDescription" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CategoryDescripion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Drivers">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DriverIdNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Initials" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CellNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EmergenceContactNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EmergenceName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="LicenseNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LicenseCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LicenseIssueDate" Type="date" Nullable="false" />
+          <Property Name="LicenseExpiryDate" Type="date" Nullable="false" />
+          <Property Name="PdpLicenseNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PdpLicenseDate" Type="date" />
+          <Property Name="OfficeId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EngineCapicities">
+          <Key>
+            <PropertyRef Name="EngineCapicityId" />
+          </Key>
+          <Property Name="EngineCapicityId" Type="int" Nullable="false" />
+          <Property Name="EngineCapicityName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuelTypes">
+          <Key>
+            <PropertyRef Name="FuelTypeId" />
+          </Key>
+          <Property Name="FuelTypeId" Type="int" Nullable="false" />
+          <Property Name="FuelTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GarageCards">
+          <Key>
+            <PropertyRef Name="GarageCardId" />
+          </Key>
+          <Property Name="GarageCardId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="ExpireDate" Type="date" Nullable="false" />
+          <Property Name="ReceivedDate" Type="date" Nullable="false" />
+          <Property Name="ReturnDate" Type="date" Nullable="false" />
+          <Property Name="VehicleId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OffenceTypes">
+          <Key>
+            <PropertyRef Name="OffenceTypeId" />
+          </Key>
+          <Property Name="OffenceTypeId" Type="int" Nullable="false" />
+          <Property Name="OffenceTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Offices">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficeName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="OfficeTypeId" Type="int" Nullable="false" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfficeTypes">
+          <Key>
+            <PropertyRef Name="OfficeTypeId" />
+          </Key>
+          <Property Name="OfficeTypeId" Type="int" Nullable="false" />
+          <Property Name="OfficeTypeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Passengers">
+          <Key>
+            <PropertyRef Name="PassengerId" />
+          </Key>
+          <Property Name="PassengerId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TripId" Type="bigint" Nullable="false" />
+          <Property Name="PassengerIdNo" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="PassengerFirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PassengerSurname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Reason" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PeriodTypes">
+          <Key>
+            <PropertyRef Name="PeriodTypeId" />
+          </Key>
+          <Property Name="PeriodTypeId" Type="int" Nullable="false" />
+          <Property Name="PeriodTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="ProvinceName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ReportDescription" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ReportPath" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SequenceNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="Responsibilities">
+          <Key>
+            <PropertyRef Name="ResponsibilityId" />
+          </Key>
+          <Property Name="ResponsibilityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResponsibilityCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="ResponsibilityName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ServiceTypes">
+          <Key>
+            <PropertyRef Name="ServiceTypeId" />
+          </Key>
+          <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+          <Property Name="ServiceTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SupplyTypes">
+          <Key>
+            <PropertyRef Name="SupplyTypeId" />
+          </Key>
+          <Property Name="SupplyTypeId" Type="int" Nullable="false" />
+          <Property Name="SupplyTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TripLogs">
+          <Key>
+            <PropertyRef Name="TripLogId" />
+          </Key>
+          <Property Name="TripLogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TripId" Type="bigint" Nullable="false" />
+          <Property Name="StartPoint" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="EndPoint" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="StartOdoMeter" Type="int" Nullable="false" />
+          <Property Name="EndOdoMeter" Type="int" Nullable="false" />
+          <Property Name="TripLogDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TripOffences">
+          <Key>
+            <PropertyRef Name="TripOffenceId" />
+          </Key>
+          <Property Name="TripOffenceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TripId" Type="bigint" Nullable="false" />
+          <Property Name="OffenceTypeId" Type="int" Nullable="false" />
+          <Property Name="OffenceDate" Type="date" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Trips">
+          <Key>
+            <PropertyRef Name="TripId" />
+          </Key>
+          <Property Name="TripId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkflowId" Type="int" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TripDescription" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TripDate" Type="date" Nullable="false" />
+          <Property Name="StartPoint" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="EndPoint" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="VehicleTypeId" Type="int" />
+          <Property Name="AuthirisedBy" Type="varchar" MaxLength="150" />
+          <Property Name="VehicleId" Type="bigint" />
+          <Property Name="DriverId" Type="bigint" Nullable="false" />
+          <Property Name="CoDriverId" Type="bigint" />
+          <Property Name="GarageCardId" Type="bigint" />
+          <Property Name="EndOdoMeter" Type="int" />
+          <Property Name="EstimatedReturnDate" Type="date" Nullable="false" />
+          <Property Name="FuelLiters" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="StartOdoMeter" Type="int" />
+          <Property Name="FuelCost" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="PreInspector" Type="varchar" MaxLength="100" />
+          <Property Name="PreInspectionComments" Type="varchar" MaxLength="500" />
+          <Property Name="PostInspector" Type="varchar" MaxLength="100" />
+          <Property Name="PostInspectionComments" Type="varchar" MaxLength="500" />
+          <Property Name="ActualReturnDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AspnetUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeNumber" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="EmailAddress" Type="char" MaxLength="50" />
+          <Property Name="ContactNumber" Type="char" MaxLength="10" />
+          <Property Name="OfficeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleMaintenances">
+          <Key>
+            <PropertyRef Name="VehicleMaintenanceId" />
+          </Key>
+          <Property Name="VehicleMaintenanceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleId" Type="bigint" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+          <Property Name="OdoMeter" Type="int" Nullable="false" />
+          <Property Name="ServiceDate" Type="datetime" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="VehicleMakes">
+          <Key>
+            <PropertyRef Name="VehicleMakeId" />
+          </Key>
+          <Property Name="VehicleMakeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleMakeName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="VehicleModels">
+          <Key>
+            <PropertyRef Name="VehicleModelId" />
+          </Key>
+          <Property Name="VehicleModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleModelName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="VehicleMakeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="VehicleId" />
+          </Key>
+          <Property Name="VehicleId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="VehicleModelId" Type="int" Nullable="false" />
+          <Property Name="VINNumber" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="VehicleYear" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="EngineCapacityId" Type="int" Nullable="false" />
+          <Property Name="DiscRenewalDate" Type="date" Nullable="false" />
+          <Property Name="ServiceInterval" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="VehicleCondition" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="SupplyTypeId" Type="int" Nullable="false" />
+          <Property Name="FuelTypeId" Type="int" Nullable="false" />
+          <Property Name="VehicleTypeId" Type="int" Nullable="false" />
+          <Property Name="LastServiceOdoMeter" Type="int" Nullable="false" />
+          <Property Name="CurrentOdoMeter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleTypes">
+          <Key>
+            <PropertyRef Name="VehicleTypeId" />
+          </Key>
+          <Property Name="VehicleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleTypeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Workflows">
+          <Key>
+            <PropertyRef Name="WorkflowId" />
+          </Key>
+          <Property Name="WorkflowId" Type="int" Nullable="false" />
+          <Property Name="WorkflowName" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accidents_Trips">
+          <End Role="Trips" Type="Self.Trips" Multiplicity="1" />
+          <End Role="Accidents" Type="Self.Accidents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trips">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Accidents">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Drivers_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="1" />
+          <End Role="Drivers" Type="Self.Drivers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Drivers">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Drivers_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Drivers" Type="Self.Drivers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Drivers">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageCards_Banks">
+          <End Role="Banks" Type="Self.Banks" Multiplicity="1" />
+          <End Role="GarageCards" Type="Self.GarageCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banks">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="GarageCards">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageCards_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="GarageCards" Type="Self.GarageCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VehicleId" />
+            </Principal>
+            <Dependent Role="GarageCards">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offices_OfficeTypes">
+          <End Role="OfficeTypes" Type="Self.OfficeTypes" Multiplicity="1" />
+          <End Role="Offices" Type="Self.Offices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficeTypes">
+              <PropertyRef Name="OfficeTypeId" />
+            </Principal>
+            <Dependent Role="Offices">
+              <PropertyRef Name="OfficeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offices_Provinces">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1" />
+          <End Role="Offices" Type="Self.Offices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Offices">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Trips">
+          <End Role="Trips" Type="Self.Trips" Multiplicity="1" />
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trips">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Passengers">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Reports" Type="Self.Reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Reports">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripLogs_TripLogs">
+          <End Role="Trips" Type="Self.Trips" Multiplicity="1" />
+          <End Role="TripLogs" Type="Self.TripLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trips">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="TripLogs">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripOffences_OffenceTypes">
+          <End Role="OffenceTypes" Type="Self.OffenceTypes" Multiplicity="1" />
+          <End Role="TripOffences" Type="Self.TripOffences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OffenceTypes">
+              <PropertyRef Name="OffenceTypeId" />
+            </Principal>
+            <Dependent Role="TripOffences">
+              <PropertyRef Name="OffenceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripOffences_Trips">
+          <End Role="Trips" Type="Self.Trips" Multiplicity="1" />
+          <End Role="TripOffences" Type="Self.TripOffences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trips">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="TripOffences">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trips_Drivers">
+          <End Role="Drivers" Type="Self.Drivers" Multiplicity="1" />
+          <End Role="Trips" Type="Self.Trips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drivers">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="Trips">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trips_VehicleTypes">
+          <End Role="VehicleTypes" Type="Self.VehicleTypes" Multiplicity="0..1" />
+          <End Role="Trips" Type="Self.Trips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleTypes">
+              <PropertyRef Name="VehicleTypeId" />
+            </Principal>
+            <Dependent Role="Trips">
+              <PropertyRef Name="VehicleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trips_Workflows">
+          <End Role="Workflows" Type="Self.Workflows" Multiplicity="0..1" />
+          <End Role="Trips" Type="Self.Trips" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workflows">
+              <PropertyRef Name="WorkflowId" />
+            </Principal>
+            <Dependent Role="Trips">
+              <PropertyRef Name="WorkflowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Offices">
+          <End Role="Offices" Type="Self.Offices" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offices">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleMaintenances_ServiceTypes">
+          <End Role="ServiceTypes" Type="Self.ServiceTypes" Multiplicity="1" />
+          <End Role="VehicleMaintenances" Type="Self.VehicleMaintenances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceTypes">
+              <PropertyRef Name="ServiceTypeId" />
+            </Principal>
+            <Dependent Role="VehicleMaintenances">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleMaintenances_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="VehicleMaintenances" Type="Self.VehicleMaintenances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VehicleId" />
+            </Principal>
+            <Dependent Role="VehicleMaintenances">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleModels_VehicleMakes">
+          <End Role="VehicleMakes" Type="Self.VehicleMakes" Multiplicity="1" />
+          <End Role="VehicleModels" Type="Self.VehicleModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleMakes">
+              <PropertyRef Name="VehicleMakeId" />
+            </Principal>
+            <Dependent Role="VehicleModels">
+              <PropertyRef Name="VehicleMakeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_EngineCapicities">
+          <End Role="EngineCapicities" Type="Self.EngineCapicities" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngineCapicities">
+              <PropertyRef Name="EngineCapicityId" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="EngineCapacityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_FuelTypes">
+          <End Role="FuelTypes" Type="Self.FuelTypes" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelTypes">
+              <PropertyRef Name="FuelTypeId" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_SupplyTypes">
+          <End Role="SupplyTypes" Type="Self.SupplyTypes" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplyTypes">
+              <PropertyRef Name="SupplyTypeId" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="SupplyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_VehicleModels">
+          <End Role="VehicleModels" Type="Self.VehicleModels" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleModels">
+              <PropertyRef Name="VehicleModelId" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="VehicleModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_VehicleTypes">
+          <End Role="VehicleTypes" Type="Self.VehicleTypes" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleTypes">
+              <PropertyRef Name="VehicleTypeId" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="VehicleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Vehicle_ManagementModelStoreContainer">
+          <EntitySet Name="Accidents" EntityType="Self.Accidents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationSettings" EntityType="Self.ApplicationSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditTrail" EntityType="Self.AuditTrail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EngineCapicities" EntityType="Self.EngineCapicities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelTypes" EntityType="Self.FuelTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GarageCards" EntityType="Self.GarageCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OffenceTypes" EntityType="Self.OffenceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficeTypes" EntityType="Self.OfficeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passengers" EntityType="Self.Passengers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PeriodTypes" EntityType="Self.PeriodTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Responsibilities" EntityType="Self.Responsibilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceTypes" EntityType="Self.ServiceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplyTypes" EntityType="Self.SupplyTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TripLogs" EntityType="Self.TripLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TripOffences" EntityType="Self.TripOffences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trips" EntityType="Self.Trips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleMaintenances" EntityType="Self.VehicleMaintenances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleMakes" EntityType="Self.VehicleMakes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleModels" EntityType="Self.VehicleModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleTypes" EntityType="Self.VehicleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workflows" EntityType="Self.Workflows" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accidents_Trips" Association="Self.FK_Accidents_Trips">
+            <End Role="Trips" EntitySet="Trips" />
+            <End Role="Accidents" EntitySet="Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Drivers_Offices" Association="Self.FK_Drivers_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Drivers" EntitySet="Drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Drivers_Statuses" Association="Self.FK_Drivers_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Drivers" EntitySet="Drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageCards_Banks" Association="Self.FK_GarageCards_Banks">
+            <End Role="Banks" EntitySet="Banks" />
+            <End Role="GarageCards" EntitySet="GarageCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageCards_Vehicles" Association="Self.FK_GarageCards_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="GarageCards" EntitySet="GarageCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offices_OfficeTypes" Association="Self.FK_Offices_OfficeTypes">
+            <End Role="OfficeTypes" EntitySet="OfficeTypes" />
+            <End Role="Offices" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offices_Provinces" Association="Self.FK_Offices_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Offices" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Trips" Association="Self.FK_Passengers_Trips">
+            <End Role="Trips" EntitySet="Trips" />
+            <End Role="Passengers" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Categories" Association="Self.FK_Reports_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Reports" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripLogs_TripLogs" Association="Self.FK_TripLogs_TripLogs">
+            <End Role="Trips" EntitySet="Trips" />
+            <End Role="TripLogs" EntitySet="TripLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripOffences_OffenceTypes" Association="Self.FK_TripOffences_OffenceTypes">
+            <End Role="OffenceTypes" EntitySet="OffenceTypes" />
+            <End Role="TripOffences" EntitySet="TripOffences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripOffences_Trips" Association="Self.FK_TripOffences_Trips">
+            <End Role="Trips" EntitySet="Trips" />
+            <End Role="TripOffences" EntitySet="TripOffences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trips_Drivers" Association="Self.FK_Trips_Drivers">
+            <End Role="Drivers" EntitySet="Drivers" />
+            <End Role="Trips" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trips_VehicleTypes" Association="Self.FK_Trips_VehicleTypes">
+            <End Role="VehicleTypes" EntitySet="VehicleTypes" />
+            <End Role="Trips" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trips_Workflows" Association="Self.FK_Trips_Workflows">
+            <End Role="Workflows" EntitySet="Workflows" />
+            <End Role="Trips" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Offices" Association="Self.FK_Users_Offices">
+            <End Role="Offices" EntitySet="Offices" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Statuses" Association="Self.FK_Users_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleMaintenances_ServiceTypes" Association="Self.FK_VehicleMaintenances_ServiceTypes">
+            <End Role="ServiceTypes" EntitySet="ServiceTypes" />
+            <End Role="VehicleMaintenances" EntitySet="VehicleMaintenances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleMaintenances_Vehicles" Association="Self.FK_VehicleMaintenances_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleMaintenances" EntitySet="VehicleMaintenances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleModels_VehicleMakes" Association="Self.FK_VehicleModels_VehicleMakes">
+            <End Role="VehicleMakes" EntitySet="VehicleMakes" />
+            <End Role="VehicleModels" EntitySet="VehicleModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_EngineCapicities" Association="Self.FK_Vehicles_EngineCapicities">
+            <End Role="EngineCapicities" EntitySet="EngineCapicities" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_FuelTypes" Association="Self.FK_Vehicles_FuelTypes">
+            <End Role="FuelTypes" EntitySet="FuelTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Statuses" Association="Self.FK_Vehicles_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_SupplyTypes" Association="Self.FK_Vehicles_SupplyTypes">
+            <End Role="SupplyTypes" EntitySet="SupplyTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_VehicleModels" Association="Self.FK_Vehicles_VehicleModels">
+            <End Role="VehicleModels" EntitySet="VehicleModels" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_VehicleTypes" Association="Self.FK_Vehicles_VehicleTypes">
+            <End Role="VehicleTypes" EntitySet="VehicleTypes" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Vehicle_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Vehicle_ManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accidents" EntityType="Vehicle_ManagementModel.Accident" />
+          <EntitySet Name="AuditTrails" EntityType="Vehicle_ManagementModel.AuditTrail" />
+          <EntitySet Name="Banks" EntityType="Vehicle_ManagementModel.Bank" />
+          <EntitySet Name="Categories" EntityType="Vehicle_ManagementModel.Category" />
+          <EntitySet Name="EngineCapicities" EntityType="Vehicle_ManagementModel.EngineCapicity" />
+          <EntitySet Name="FuelTypes" EntityType="Vehicle_ManagementModel.FuelType" />
+          <EntitySet Name="GarageCards" EntityType="Vehicle_ManagementModel.GarageCard" />
+          <EntitySet Name="OffenceTypes" EntityType="Vehicle_ManagementModel.OffenceType" />
+          <EntitySet Name="OfficeTypes" EntityType="Vehicle_ManagementModel.OfficeType" />
+          <EntitySet Name="Passengers" EntityType="Vehicle_ManagementModel.Passenger" />
+          <EntitySet Name="PeriodTypes" EntityType="Vehicle_ManagementModel.PeriodType" />
+          <EntitySet Name="Provinces" EntityType="Vehicle_ManagementModel.Province" />
+          <EntitySet Name="Reports" EntityType="Vehicle_ManagementModel.Report" />
+          <EntitySet Name="Responsibilities" EntityType="Vehicle_ManagementModel.Responsibility" />
+          <EntitySet Name="ServiceTypes" EntityType="Vehicle_ManagementModel.ServiceType" />
+          <EntitySet Name="Statuses" EntityType="Vehicle_ManagementModel.Status" />
+          <EntitySet Name="SupplyTypes" EntityType="Vehicle_ManagementModel.SupplyType" />
+          <EntitySet Name="TripLogs" EntityType="Vehicle_ManagementModel.TripLog" />
+          <EntitySet Name="VehicleMakes" EntityType="Vehicle_ManagementModel.VehicleMake" />
+          <EntitySet Name="VehicleModels" EntityType="Vehicle_ManagementModel.VehicleModel" />
+          <EntitySet Name="VehicleTypes" EntityType="Vehicle_ManagementModel.VehicleType" />
+          <AssociationSet Name="FK_GarageCards_Banks" Association="Vehicle_ManagementModel.FK_GarageCards_Banks">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="GarageCard" EntitySet="GarageCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reports_Categories" Association="Vehicle_ManagementModel.FK_Reports_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleModels_VehicleMakes" Association="Vehicle_ManagementModel.FK_VehicleModels_VehicleMakes">
+            <End Role="VehicleMake" EntitySet="VehicleMakes" />
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+          </AssociationSet>
+          <EntitySet Name="TripOffences" EntityType="Vehicle_ManagementModel.TripOffence" />
+          <AssociationSet Name="FK_TripOffences_OffenceTypes" Association="Vehicle_ManagementModel.FK_TripOffences_OffenceTypes">
+            <End Role="OffenceType" EntitySet="OffenceTypes" />
+            <End Role="TripOffence" EntitySet="TripOffences" />
+          </AssociationSet>
+          <EntitySet Name="VehicleMaintenances" EntityType="Vehicle_ManagementModel.VehicleMaintenance" />
+          <AssociationSet Name="FK_VehicleMaintenances_ServiceTypes" Association="Vehicle_ManagementModel.FK_VehicleMaintenances_ServiceTypes">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="VehicleMaintenance" EntitySet="VehicleMaintenances" />
+          </AssociationSet>
+          <EntitySet Name="ApplicationSettings" EntityType="Vehicle_ManagementModel.ApplicationSetting" />
+          <EntitySet Name="Trips" EntityType="Vehicle_ManagementModel.Trip" />
+          <EntitySet Name="Workflows" EntityType="Vehicle_ManagementModel.Workflow" />
+          <AssociationSet Name="FK_Accidents_Trips" Association="Vehicle_ManagementModel.FK_Accidents_Trips">
+            <End Role="Trip" EntitySet="Trips" />
+            <End Role="Accident" EntitySet="Accidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passengers_Trips" Association="Vehicle_ManagementModel.FK_Passengers_Trips">
+            <End Role="Trip" EntitySet="Trips" />
+            <End Role="Passenger" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripLogs_TripLogs" Association="Vehicle_ManagementModel.FK_TripLogs_TripLogs">
+            <End Role="Trip" EntitySet="Trips" />
+            <End Role="TripLog" EntitySet="TripLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TripOffences_Trips" Association="Vehicle_ManagementModel.FK_TripOffences_Trips">
+            <End Role="Trip" EntitySet="Trips" />
+            <End Role="TripOffence" EntitySet="TripOffences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trips_VehicleTypes" Association="Vehicle_ManagementModel.FK_Trips_VehicleTypes">
+            <End Role="VehicleType" EntitySet="VehicleTypes" />
+            <End Role="Trip" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trips_Workflows" Association="Vehicle_ManagementModel.FK_Trips_Workflows">
+            <End Role="Workflow" EntitySet="Workflows" />
+            <End Role="Trip" EntitySet="Trips" />
+          </AssociationSet>
+          <EntitySet Name="Drivers" EntityType="Vehicle_ManagementModel.Driver" />
+          <EntitySet Name="Users" EntityType="Vehicle_ManagementModel.User" />
+          <AssociationSet Name="FK_Drivers_Statuses" Association="Vehicle_ManagementModel.FK_Drivers_Statuses">
+            <End Role="Status" EntitySet="Statuses" />
+            <End Role="Driver" EntitySet="Drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trips_Drivers" Association="Vehicle_ManagementModel.FK_Trips_Drivers">
+            <End Role="Driver" EntitySet="Drivers" />
+            <End Role="Trip" EntitySet="Trips" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Statuses" Association="Vehicle_ManagementModel.FK_Users_Statuses">
+            <End Role="Status" EntitySet="Statuses" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Offices" EntityType="Vehicle_ManagementModel.Office" />
+          <EntitySet Name="Vehicles" EntityType="Vehicle_ManagementModel.Vehicle" />
+          <AssociationSet Name="FK_Drivers_Offices" Association="Vehicle_ManagementModel.FK_Drivers_Offices">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="Driver" EntitySet="Drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_EngineCapicities" Association="Vehicle_ManagementModel.FK_Vehicles_EngineCapicities">
+            <End Role="EngineCapicity" EntitySet="EngineCapicities" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_FuelTypes" Association="Vehicle_ManagementModel.FK_Vehicles_FuelTypes">
+            <End Role="FuelType" EntitySet="FuelTypes" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GarageCards_Vehicles" Association="Vehicle_ManagementModel.FK_GarageCards_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="GarageCard" EntitySet="GarageCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offices_OfficeTypes" Association="Vehicle_ManagementModel.FK_Offices_OfficeTypes">
+            <End Role="OfficeType" EntitySet="OfficeTypes" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offices_Provinces" Association="Vehicle_ManagementModel.FK_Offices_Provinces">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Offices" Association="Vehicle_ManagementModel.FK_Users_Offices">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Statuses" Association="Vehicle_ManagementModel.FK_Vehicles_Statuses">
+            <End Role="Status" EntitySet="Statuses" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_SupplyTypes" Association="Vehicle_ManagementModel.FK_Vehicles_SupplyTypes">
+            <End Role="SupplyType" EntitySet="SupplyTypes" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleMaintenances_Vehicles" Association="Vehicle_ManagementModel.FK_VehicleMaintenances_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="VehicleMaintenance" EntitySet="VehicleMaintenances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_VehicleModels" Association="Vehicle_ManagementModel.FK_Vehicles_VehicleModels">
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_VehicleTypes" Association="Vehicle_ManagementModel.FK_Vehicles_VehicleTypes">
+            <End Role="VehicleType" EntitySet="VehicleTypes" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Accident">
+          <Key>
+            <PropertyRef Name="AccidentId" />
+          </Key>
+          <Property Name="AccidentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripId" Type="Int64" Nullable="false" />
+          <Property Name="AccidentDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CaseNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AccidentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AccidentLocation" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Trip" Relationship="Vehicle_ManagementModel.FK_Accidents_Trips" FromRole="Accident" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="AuditTrail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RevisionStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EntityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntityKey" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OldData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChangedColumns" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="BankDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GarageCards" Relationship="Vehicle_ManagementModel.FK_GarageCards_Banks" FromRole="Bank" ToRole="GarageCard" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryDescripion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reports" Relationship="Vehicle_ManagementModel.FK_Reports_Categories" FromRole="Category" ToRole="Report" />
+        </EntityType>
+        <EntityType Name="EngineCapicity">
+          <Key>
+            <PropertyRef Name="EngineCapicityId" />
+          </Key>
+          <Property Name="EngineCapicityId" Type="Int32" Nullable="false" />
+          <Property Name="EngineCapicityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Vehicle_ManagementModel.FK_Vehicles_EngineCapicities" FromRole="EngineCapicity" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="FuelType">
+          <Key>
+            <PropertyRef Name="FuelTypeId" />
+          </Key>
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="FuelTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Vehicle_ManagementModel.FK_Vehicles_FuelTypes" FromRole="FuelType" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="GarageCard">
+          <Key>
+            <PropertyRef Name="GarageCardId" />
+          </Key>
+          <Property Name="GarageCardId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VehicleId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="Vehicle_ManagementModel.FK_GarageCards_Banks" FromRole="GarageCard" ToRole="Bank" />
+          <NavigationProperty Name="Vehicle" Relationship="Vehicle_ManagementModel.FK_GarageCards_Vehicles" FromRole="GarageCard" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="OffenceType">
+          <Key>
+            <PropertyRef Name="OffenceTypeId" />
+          </Key>
+          <Property Name="OffenceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OffenceTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TripOffences" Relationship="Vehicle_ManagementModel.FK_TripOffences_OffenceTypes" FromRole="OffenceType" ToRole="TripOffence" />
+        </EntityType>
+        <EntityType Name="OfficeType">
+          <Key>
+            <PropertyRef Name="OfficeTypeId" />
+          </Key>
+          <Property Name="OfficeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OfficeTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Offices" Relationship="Vehicle_ManagementModel.FK_Offices_OfficeTypes" FromRole="OfficeType" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="PassengerId" />
+          </Key>
+          <Property Name="PassengerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripId" Type="Int64" Nullable="false" />
+          <Property Name="PassengerIdNo" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="PassengerFirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PassengerSurname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Trip" Relationship="Vehicle_ManagementModel.FK_Passengers_Trips" FromRole="Passenger" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="PeriodType">
+          <Key>
+            <PropertyRef Name="PeriodTypeId" />
+          </Key>
+          <Property Name="PeriodTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PeriodTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="ProvinceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Offices" Relationship="Vehicle_ManagementModel.FK_Offices_Provinces" FromRole="Province" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ReportDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReportPath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SequenceNumber" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Vehicle_ManagementModel.FK_Reports_Categories" FromRole="Report" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Responsibility">
+          <Key>
+            <PropertyRef Name="ResponsibilityId" />
+          </Key>
+          <Property Name="ResponsibilityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResponsibilityCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ResponsibilityName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="ServiceTypeId" />
+          </Key>
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VehicleMaintenances" Relationship="Vehicle_ManagementModel.FK_VehicleMaintenances_ServiceTypes" FromRole="ServiceType" ToRole="VehicleMaintenance" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Drivers" Relationship="Vehicle_ManagementModel.FK_Drivers_Statuses" FromRole="Status" ToRole="Driver" />
+          <NavigationProperty Name="Users" Relationship="Vehicle_ManagementModel.FK_Users_Statuses" FromRole="Status" ToRole="User" />
+          <NavigationProperty Name="Vehicles" Relationship="Vehicle_ManagementModel.FK_Vehicles_Statuses" FromRole="Status" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="SupplyType">
+          <Key>
+            <PropertyRef Name="SupplyTypeId" />
+          </Key>
+          <Property Name="SupplyTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SupplyTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Vehicle_ManagementModel.FK_Vehicles_SupplyTypes" FromRole="SupplyType" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="TripLog">
+          <Key>
+            <PropertyRef Name="TripLogId" />
+          </Key>
+          <Property Name="TripLogId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripId" Type="Int64" Nullable="false" />
+          <Property Name="StartPoint" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EndPoint" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="StartOdoMeter" Type="Int32" Nullable="false" />
+          <Property Name="EndOdoMeter" Type="Int32" Nullable="false" />
+          <Property Name="TripLogDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Trip" Relationship="Vehicle_ManagementModel.FK_TripLogs_TripLogs" FromRole="TripLog" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="VehicleMake">
+          <Key>
+            <PropertyRef Name="VehicleMakeId" />
+          </Key>
+          <Property Name="VehicleMakeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleMakeName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VehicleModels" Relationship="Vehicle_ManagementModel.FK_VehicleModels_VehicleMakes" FromRole="VehicleMake" ToRole="VehicleModel" />
+        </EntityType>
+        <EntityType Name="VehicleModel">
+          <Key>
+            <PropertyRef Name="VehicleModelId" />
+          </Key>
+          <Property Name="VehicleModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleModelName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleMakeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VehicleMake" Relationship="Vehicle_ManagementModel.FK_VehicleModels_VehicleMakes" FromRole="VehicleModel" ToRole="VehicleMake" />
+          <NavigationProperty Name="Vehicles" Relationship="Vehicle_ManagementModel.FK_Vehicles_VehicleModels" FromRole="VehicleModel" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="VehicleTypeId" />
+          </Key>
+          <Property Name="VehicleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Trips" Relationship="Vehicle_ManagementModel.FK_Trips_VehicleTypes" FromRole="VehicleType" ToRole="Trip" />
+          <NavigationProperty Name="Vehicles" Relationship="Vehicle_ManagementModel.FK_Vehicles_VehicleTypes" FromRole="VehicleType" ToRole="Vehicle" />
+        </EntityType>
+        <Association Name="FK_GarageCards_Banks">
+          <End Type="Vehicle_ManagementModel.Bank" Role="Bank" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.GarageCard" Role="GarageCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="GarageCard">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reports_Categories">
+          <End Type="Vehicle_ManagementModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Report" Role="Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleModels_VehicleMakes">
+          <End Type="Vehicle_ManagementModel.VehicleMake" Role="VehicleMake" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.VehicleModel" Role="VehicleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleMake">
+              <PropertyRef Name="VehicleMakeId" />
+            </Principal>
+            <Dependent Role="VehicleModel">
+              <PropertyRef Name="VehicleMakeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TripOffence">
+          <Key>
+            <PropertyRef Name="TripOffenceId" />
+          </Key>
+          <Property Name="TripOffenceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TripId" Type="Int64" Nullable="false" />
+          <Property Name="OffenceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OffenceDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OffenceType" Relationship="Vehicle_ManagementModel.FK_TripOffences_OffenceTypes" FromRole="TripOffence" ToRole="OffenceType" />
+          <NavigationProperty Name="Trip" Relationship="Vehicle_ManagementModel.FK_TripOffences_Trips" FromRole="TripOffence" ToRole="Trip" />
+        </EntityType>
+        <Association Name="FK_TripOffences_OffenceTypes">
+          <End Type="Vehicle_ManagementModel.OffenceType" Role="OffenceType" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.TripOffence" Role="TripOffence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OffenceType">
+              <PropertyRef Name="OffenceTypeId" />
+            </Principal>
+            <Dependent Role="TripOffence">
+              <PropertyRef Name="OffenceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VehicleMaintenance">
+          <Key>
+            <PropertyRef Name="VehicleMaintenanceId" />
+          </Key>
+          <Property Name="VehicleMaintenanceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleId" Type="Int64" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OdoMeter" Type="Int32" Nullable="false" />
+          <Property Name="ServiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ServiceType" Relationship="Vehicle_ManagementModel.FK_VehicleMaintenances_ServiceTypes" FromRole="VehicleMaintenance" ToRole="ServiceType" />
+          <NavigationProperty Name="Vehicle" Relationship="Vehicle_ManagementModel.FK_VehicleMaintenances_Vehicles" FromRole="VehicleMaintenance" ToRole="Vehicle" />
+        </EntityType>
+        <Association Name="FK_VehicleMaintenances_ServiceTypes">
+          <End Type="Vehicle_ManagementModel.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.VehicleMaintenance" Role="VehicleMaintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="ServiceTypeId" />
+            </Principal>
+            <Dependent Role="VehicleMaintenance">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ApplicationSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="TripId" />
+          </Key>
+          <Property Name="TripId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkflowId" Type="Int32" />
+          <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TripDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TripDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StartPoint" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EndPoint" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleTypeId" Type="Int32" />
+          <Property Name="AuthirisedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleId" Type="Int64" />
+          <Property Name="DriverId" Type="Int64" Nullable="false" />
+          <Property Name="CoDriverId" Type="Int64" />
+          <Property Name="GarageCardId" Type="Int64" />
+          <Property Name="EndOdoMeter" Type="Int32" />
+          <Property Name="EstimatedReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FuelLiters" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="StartOdoMeter" Type="Int32" />
+          <Property Name="FuelCost" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="PreInspector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PreInspectionComments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PostInspector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PostInspectionComments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ActualReturnDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Accidents" Relationship="Vehicle_ManagementModel.FK_Accidents_Trips" FromRole="Trip" ToRole="Accident" />
+          <NavigationProperty Name="Passengers" Relationship="Vehicle_ManagementModel.FK_Passengers_Trips" FromRole="Trip" ToRole="Passenger" />
+          <NavigationProperty Name="TripLogs" Relationship="Vehicle_ManagementModel.FK_TripLogs_TripLogs" FromRole="Trip" ToRole="TripLog" />
+          <NavigationProperty Name="TripOffences" Relationship="Vehicle_ManagementModel.FK_TripOffences_Trips" FromRole="Trip" ToRole="TripOffence" />
+          <NavigationProperty Name="VehicleType" Relationship="Vehicle_ManagementModel.FK_Trips_VehicleTypes" FromRole="Trip" ToRole="VehicleType" />
+          <NavigationProperty Name="Workflow" Relationship="Vehicle_ManagementModel.FK_Trips_Workflows" FromRole="Trip" ToRole="Workflow" />
+          <NavigationProperty Name="Driver" Relationship="Vehicle_ManagementModel.FK_Trips_Drivers" FromRole="Trip" ToRole="Driver" />
+        </EntityType>
+        <EntityType Name="Workflow">
+          <Key>
+            <PropertyRef Name="WorkflowId" />
+          </Key>
+          <Property Name="WorkflowId" Type="Int32" Nullable="false" />
+          <Property Name="WorkflowName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Trips" Relationship="Vehicle_ManagementModel.FK_Trips_Workflows" FromRole="Workflow" ToRole="Trip" />
+        </EntityType>
+        <Association Name="FK_Accidents_Trips">
+          <End Type="Vehicle_ManagementModel.Trip" Role="Trip" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Accident" Role="Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Accident">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passengers_Trips">
+          <End Type="Vehicle_ManagementModel.Trip" Role="Trip" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Passenger" Role="Passenger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="Passenger">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripLogs_TripLogs">
+          <End Type="Vehicle_ManagementModel.Trip" Role="Trip" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.TripLog" Role="TripLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="TripLog">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TripOffences_Trips">
+          <End Type="Vehicle_ManagementModel.Trip" Role="Trip" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.TripOffence" Role="TripOffence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="TripId" />
+            </Principal>
+            <Dependent Role="TripOffence">
+              <PropertyRef Name="TripId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trips_VehicleTypes">
+          <End Type="Vehicle_ManagementModel.VehicleType" Role="VehicleType" Multiplicity="0..1" />
+          <End Type="Vehicle_ManagementModel.Trip" Role="Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="VehicleTypeId" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="VehicleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trips_Workflows">
+          <End Type="Vehicle_ManagementModel.Workflow" Role="Workflow" Multiplicity="0..1" />
+          <End Type="Vehicle_ManagementModel.Trip" Role="Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workflow">
+              <PropertyRef Name="WorkflowId" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="WorkflowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DriverIdNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Initials" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CellNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmergenceContactNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmergenceName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseIssueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LicenseExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PdpLicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PdpLicenseDate" Type="DateTime" Precision="0" />
+          <Property Name="OfficeId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Status" Relationship="Vehicle_ManagementModel.FK_Drivers_Statuses" FromRole="Driver" ToRole="Status" />
+          <NavigationProperty Name="Trips" Relationship="Vehicle_ManagementModel.FK_Trips_Drivers" FromRole="Driver" ToRole="Trip" />
+          <NavigationProperty Name="Office" Relationship="Vehicle_ManagementModel.FK_Drivers_Offices" FromRole="Driver" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AspnetUserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeNumber" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="OfficeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Status" Relationship="Vehicle_ManagementModel.FK_Users_Statuses" FromRole="User" ToRole="Status" />
+          <NavigationProperty Name="Office" Relationship="Vehicle_ManagementModel.FK_Users_Offices" FromRole="User" ToRole="Office" />
+        </EntityType>
+        <Association Name="FK_Drivers_Statuses">
+          <End Type="Vehicle_ManagementModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Driver" Role="Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trips_Drivers">
+          <End Type="Vehicle_ManagementModel.Driver" Role="Driver" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Trip" Role="Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Statuses">
+          <End Type="Vehicle_ManagementModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Drivers" Relationship="Vehicle_ManagementModel.FK_Drivers_Offices" FromRole="Office" ToRole="Driver" />
+          <NavigationProperty Name="OfficeType" Relationship="Vehicle_ManagementModel.FK_Offices_OfficeTypes" FromRole="Office" ToRole="OfficeType" />
+          <NavigationProperty Name="Province" Relationship="Vehicle_ManagementModel.FK_Offices_Provinces" FromRole="Office" ToRole="Province" />
+          <NavigationProperty Name="Users" Relationship="Vehicle_ManagementModel.FK_Users_Offices" FromRole="Office" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VehicleId" />
+          </Key>
+          <Property Name="VehicleId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleModelId" Type="Int32" Nullable="false" />
+          <Property Name="VINNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleYear" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="EngineCapacityId" Type="Int32" Nullable="false" />
+          <Property Name="DiscRenewalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ServiceInterval" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleCondition" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SupplyTypeId" Type="Int32" Nullable="false" />
+          <Property Name="FuelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LastServiceOdoMeter" Type="Int32" Nullable="false" />
+          <Property Name="CurrentOdoMeter" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EngineCapicity" Relationship="Vehicle_ManagementModel.FK_Vehicles_EngineCapicities" FromRole="Vehicle" ToRole="EngineCapicity" />
+          <NavigationProperty Name="FuelType" Relationship="Vehicle_ManagementModel.FK_Vehicles_FuelTypes" FromRole="Vehicle" ToRole="FuelType" />
+          <NavigationProperty Name="GarageCards" Relationship="Vehicle_ManagementModel.FK_GarageCards_Vehicles" FromRole="Vehicle" ToRole="GarageCard" />
+          <NavigationProperty Name="Status" Relationship="Vehicle_ManagementModel.FK_Vehicles_Statuses" FromRole="Vehicle" ToRole="Status" />
+          <NavigationProperty Name="SupplyType" Relationship="Vehicle_ManagementModel.FK_Vehicles_SupplyTypes" FromRole="Vehicle" ToRole="SupplyType" />
+          <NavigationProperty Name="VehicleMaintenances" Relationship="Vehicle_ManagementModel.FK_VehicleMaintenances_Vehicles" FromRole="Vehicle" ToRole="VehicleMaintenance" />
+          <NavigationProperty Name="VehicleModel" Relationship="Vehicle_ManagementModel.FK_Vehicles_VehicleModels" FromRole="Vehicle" ToRole="VehicleModel" />
+          <NavigationProperty Name="VehicleType" Relationship="Vehicle_ManagementModel.FK_Vehicles_VehicleTypes" FromRole="Vehicle" ToRole="VehicleType" />
+        </EntityType>
+        <Association Name="FK_Drivers_Offices">
+          <End Type="Vehicle_ManagementModel.Office" Role="Office" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Driver" Role="Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_EngineCapicities">
+          <End Type="Vehicle_ManagementModel.EngineCapicity" Role="EngineCapicity" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EngineCapicity">
+              <PropertyRef Name="EngineCapicityId" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="EngineCapacityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_FuelTypes">
+          <End Type="Vehicle_ManagementModel.FuelType" Role="FuelType" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuelType">
+              <PropertyRef Name="FuelTypeId" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="FuelTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GarageCards_Vehicles">
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.GarageCard" Role="GarageCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VehicleId" />
+            </Principal>
+            <Dependent Role="GarageCard">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offices_OfficeTypes">
+          <End Type="Vehicle_ManagementModel.OfficeType" Role="OfficeType" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Office" Role="Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficeType">
+              <PropertyRef Name="OfficeTypeId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="OfficeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offices_Provinces">
+          <End Type="Vehicle_ManagementModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Office" Role="Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Offices">
+          <End Type="Vehicle_ManagementModel.Office" Role="Office" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Statuses">
+          <End Type="Vehicle_ManagementModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_SupplyTypes">
+          <End Type="Vehicle_ManagementModel.SupplyType" Role="SupplyType" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplyType">
+              <PropertyRef Name="SupplyTypeId" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="SupplyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleMaintenances_Vehicles">
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.VehicleMaintenance" Role="VehicleMaintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VehicleId" />
+            </Principal>
+            <Dependent Role="VehicleMaintenance">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_VehicleModels">
+          <End Type="Vehicle_ManagementModel.VehicleModel" Role="VehicleModel" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleModel">
+              <PropertyRef Name="VehicleModelId" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="VehicleModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_VehicleTypes">
+          <End Type="Vehicle_ManagementModel.VehicleType" Role="VehicleType" Multiplicity="1" />
+          <End Type="Vehicle_ManagementModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="VehicleTypeId" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="VehicleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Vehicle_ManagementModelStoreContainer" CdmEntityContainer="Vehicle_ManagementEntities">
+          <EntitySetMapping Name="Accidents">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Accident">
+              <MappingFragment StoreEntitySet="Accidents">
+                <ScalarProperty Name="AccidentLocation" ColumnName="AccidentLocation" />
+                <ScalarProperty Name="AccidentDate" ColumnName="AccidentDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="AccidentDescription" ColumnName="AccidentDescription" />
+                <ScalarProperty Name="TripId" ColumnName="TripId" />
+                <ScalarProperty Name="AccidentId" ColumnName="AccidentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditTrails">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.AuditTrail">
+              <MappingFragment StoreEntitySet="AuditTrail">
+                <ScalarProperty Name="ChangedColumns" ColumnName="ChangedColumns" />
+                <ScalarProperty Name="NewData" ColumnName="NewData" />
+                <ScalarProperty Name="OldData" ColumnName="OldData" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EntityKey" ColumnName="EntityKey" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+                <ScalarProperty Name="RevisionStamp" ColumnName="RevisionStamp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="BankDescription" ColumnName="BankDescription" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryDescripion" ColumnName="CategoryDescripion" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EngineCapicities">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.EngineCapicity">
+              <MappingFragment StoreEntitySet="EngineCapicities">
+                <ScalarProperty Name="EngineCapicityName" ColumnName="EngineCapicityName" />
+                <ScalarProperty Name="EngineCapicityId" ColumnName="EngineCapicityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuelTypes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.FuelType">
+              <MappingFragment StoreEntitySet="FuelTypes">
+                <ScalarProperty Name="FuelTypeName" ColumnName="FuelTypeName" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GarageCards">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.GarageCard">
+              <MappingFragment StoreEntitySet="GarageCards">
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="GarageCardId" ColumnName="GarageCardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OffenceTypes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.OffenceType">
+              <MappingFragment StoreEntitySet="OffenceTypes">
+                <ScalarProperty Name="OffenceTypeName" ColumnName="OffenceTypeName" />
+                <ScalarProperty Name="OffenceTypeId" ColumnName="OffenceTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficeTypes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.OfficeType">
+              <MappingFragment StoreEntitySet="OfficeTypes">
+                <ScalarProperty Name="OfficeTypeName" ColumnName="OfficeTypeName" />
+                <ScalarProperty Name="OfficeTypeId" ColumnName="OfficeTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passengers">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Passenger">
+              <MappingFragment StoreEntitySet="Passengers">
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PassengerSurname" ColumnName="PassengerSurname" />
+                <ScalarProperty Name="PassengerFirstName" ColumnName="PassengerFirstName" />
+                <ScalarProperty Name="PassengerIdNo" ColumnName="PassengerIdNo" />
+                <ScalarProperty Name="TripId" ColumnName="TripId" />
+                <ScalarProperty Name="PassengerId" ColumnName="PassengerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PeriodTypes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.PeriodType">
+              <MappingFragment StoreEntitySet="PeriodTypes">
+                <ScalarProperty Name="PeriodTypeName" ColumnName="PeriodTypeName" />
+                <ScalarProperty Name="PeriodTypeId" ColumnName="PeriodTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Province">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Report">
+              <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ReportPath" ColumnName="ReportPath" />
+                <ScalarProperty Name="ReportDescription" ColumnName="ReportDescription" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responsibilities">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Responsibility">
+              <MappingFragment StoreEntitySet="Responsibilities">
+                <ScalarProperty Name="ResponsibilityName" ColumnName="ResponsibilityName" />
+                <ScalarProperty Name="ResponsibilityCode" ColumnName="ResponsibilityCode" />
+                <ScalarProperty Name="ResponsibilityId" ColumnName="ResponsibilityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTypes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceTypes">
+                <ScalarProperty Name="ServiceTypeName" ColumnName="ServiceTypeName" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Status">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplyTypes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.SupplyType">
+              <MappingFragment StoreEntitySet="SupplyTypes">
+                <ScalarProperty Name="SupplyTypeName" ColumnName="SupplyTypeName" />
+                <ScalarProperty Name="SupplyTypeId" ColumnName="SupplyTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TripLogs">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.TripLog">
+              <MappingFragment StoreEntitySet="TripLogs">
+                <ScalarProperty Name="TripLogDate" ColumnName="TripLogDate" />
+                <ScalarProperty Name="EndOdoMeter" ColumnName="EndOdoMeter" />
+                <ScalarProperty Name="StartOdoMeter" ColumnName="StartOdoMeter" />
+                <ScalarProperty Name="EndPoint" ColumnName="EndPoint" />
+                <ScalarProperty Name="StartPoint" ColumnName="StartPoint" />
+                <ScalarProperty Name="TripId" ColumnName="TripId" />
+                <ScalarProperty Name="TripLogId" ColumnName="TripLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleMakes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.VehicleMake">
+              <MappingFragment StoreEntitySet="VehicleMakes">
+                <ScalarProperty Name="VehicleMakeName" ColumnName="VehicleMakeName" />
+                <ScalarProperty Name="VehicleMakeId" ColumnName="VehicleMakeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleModels">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.VehicleModel">
+              <MappingFragment StoreEntitySet="VehicleModels">
+                <ScalarProperty Name="VehicleMakeId" ColumnName="VehicleMakeId" />
+                <ScalarProperty Name="VehicleModelName" ColumnName="VehicleModelName" />
+                <ScalarProperty Name="VehicleModelId" ColumnName="VehicleModelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleTypes">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.VehicleType">
+              <MappingFragment StoreEntitySet="VehicleTypes">
+                <ScalarProperty Name="VehicleTypeName" ColumnName="VehicleTypeName" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TripOffences">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.TripOffence">
+              <MappingFragment StoreEntitySet="TripOffences">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="OffenceDate" ColumnName="OffenceDate" />
+                <ScalarProperty Name="OffenceTypeId" ColumnName="OffenceTypeId" />
+                <ScalarProperty Name="TripId" ColumnName="TripId" />
+                <ScalarProperty Name="TripOffenceId" ColumnName="TripOffenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleMaintenances">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.VehicleMaintenance">
+              <MappingFragment StoreEntitySet="VehicleMaintenances">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ServiceDate" ColumnName="ServiceDate" />
+                <ScalarProperty Name="OdoMeter" ColumnName="OdoMeter" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="VehicleMaintenanceId" ColumnName="VehicleMaintenanceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationSettings">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.ApplicationSetting">
+              <MappingFragment StoreEntitySet="ApplicationSettings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trips">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Trip">
+              <MappingFragment StoreEntitySet="Trips">
+                <ScalarProperty Name="ActualReturnDate" ColumnName="ActualReturnDate" />
+                <ScalarProperty Name="PostInspectionComments" ColumnName="PostInspectionComments" />
+                <ScalarProperty Name="PostInspector" ColumnName="PostInspector" />
+                <ScalarProperty Name="PreInspectionComments" ColumnName="PreInspectionComments" />
+                <ScalarProperty Name="PreInspector" ColumnName="PreInspector" />
+                <ScalarProperty Name="FuelCost" ColumnName="FuelCost" />
+                <ScalarProperty Name="StartOdoMeter" ColumnName="StartOdoMeter" />
+                <ScalarProperty Name="FuelLiters" ColumnName="FuelLiters" />
+                <ScalarProperty Name="EstimatedReturnDate" ColumnName="EstimatedReturnDate" />
+                <ScalarProperty Name="EndOdoMeter" ColumnName="EndOdoMeter" />
+                <ScalarProperty Name="GarageCardId" ColumnName="GarageCardId" />
+                <ScalarProperty Name="CoDriverId" ColumnName="CoDriverId" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="AuthirisedBy" ColumnName="AuthirisedBy" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="EndPoint" ColumnName="EndPoint" />
+                <ScalarProperty Name="StartPoint" ColumnName="StartPoint" />
+                <ScalarProperty Name="TripDate" ColumnName="TripDate" />
+                <ScalarProperty Name="TripDescription" ColumnName="TripDescription" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="WorkflowId" ColumnName="WorkflowId" />
+                <ScalarProperty Name="TripId" ColumnName="TripId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workflows">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Workflow">
+              <MappingFragment StoreEntitySet="Workflows">
+                <ScalarProperty Name="WorkflowName" ColumnName="WorkflowName" />
+                <ScalarProperty Name="WorkflowId" ColumnName="WorkflowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Driver">
+              <MappingFragment StoreEntitySet="Drivers">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="PdpLicenseDate" ColumnName="PdpLicenseDate" />
+                <ScalarProperty Name="PdpLicenseNumber" ColumnName="PdpLicenseNumber" />
+                <ScalarProperty Name="LicenseExpiryDate" ColumnName="LicenseExpiryDate" />
+                <ScalarProperty Name="LicenseIssueDate" ColumnName="LicenseIssueDate" />
+                <ScalarProperty Name="LicenseCode" ColumnName="LicenseCode" />
+                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="EmergenceName" ColumnName="EmergenceName" />
+                <ScalarProperty Name="EmergenceContactNo" ColumnName="EmergenceContactNo" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Initials" ColumnName="Initials" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="DriverIdNumber" ColumnName="DriverIdNumber" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AspnetUserId" ColumnName="AspnetUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Office">
+              <MappingFragment StoreEntitySet="Offices">
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="OfficeTypeId" ColumnName="OfficeTypeId" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="Vehicle_ManagementModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="CurrentOdoMeter" ColumnName="CurrentOdoMeter" />
+                <ScalarProperty Name="LastServiceOdoMeter" ColumnName="LastServiceOdoMeter" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="FuelTypeId" ColumnName="FuelTypeId" />
+                <ScalarProperty Name="SupplyTypeId" ColumnName="SupplyTypeId" />
+                <ScalarProperty Name="VehicleCondition" ColumnName="VehicleCondition" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="ServiceInterval" ColumnName="ServiceInterval" />
+                <ScalarProperty Name="DiscRenewalDate" ColumnName="DiscRenewalDate" />
+                <ScalarProperty Name="EngineCapacityId" ColumnName="EngineCapacityId" />
+                <ScalarProperty Name="VehicleYear" ColumnName="VehicleYear" />
+                <ScalarProperty Name="VINNumber" ColumnName="VINNumber" />
+                <ScalarProperty Name="VehicleModelId" ColumnName="VehicleModelId" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
