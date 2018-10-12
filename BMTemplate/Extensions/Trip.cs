@@ -11,5 +11,12 @@ namespace BMTemplate
         public Vehicle Vehicle { get; set; }
 
         public GarageCard GarageCard { get; set; }
+        
+
+        public string DriverName { get; set; }
+    }
+    public class TripPoco: Trip
+    {
+        
     }
 }

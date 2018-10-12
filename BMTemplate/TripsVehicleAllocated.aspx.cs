@@ -22,7 +22,7 @@ namespace BMTemplate
 
         private void loadAvailableVehicles()
         {
-            this.gridTrips.DataSource = m_Repository.GetOpenTrips()
+            this.gridTrips.DataSource = m_Repository.GetOpenTrips(2)
                                     .OrderBy(a => a.Vehicle.RegistrationNumber)
                                     .Select<Trip, object>(new Func<Trip, object>(t => new {
                                         t.TripId,

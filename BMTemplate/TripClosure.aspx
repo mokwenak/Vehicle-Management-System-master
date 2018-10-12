@@ -20,17 +20,18 @@
                         OnRowCommand="grdTrips_RowCommand" CaptionAlign="Top" CellPadding="2"
                         OnPageIndexChanging="grdTrips_PageIndexChanging" AllowPaging="true" Width="951px" >
                         <Columns>
-                            <asp:BoundField DataField="RegistrationNumber" HeaderText="Vehicle Registration"
-                                ReadOnly="True" SortExpression="RegistrationNumber" ItemStyle-Width="120">
-                                <ItemStyle Width="120px"></ItemStyle>
-                            </asp:BoundField>
+                          
                             <asp:BoundField DataField="SHORT_DESC" HeaderText="Trip Description"
-                                ItemStyle-Width="450" ReadOnly="True" SortExpression="SHORT_DESC">
-                                <ItemStyle Width="450px"></ItemStyle>
+                                ItemStyle-Width="350" ReadOnly="True" SortExpression="SHORT_DESC">
+                                <ItemStyle Width="350px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="ProjectName" HeaderText="Project Name"
                                 ReadOnly="True" SortExpression="ProjectName" ItemStyle-Width="160">
                                 <ItemStyle Width="160px"></ItemStyle>
+                            </asp:BoundField>
+                             <asp:BoundField DataField="DriverName" HeaderText="Driver"
+                                ReadOnly="True" SortExpression="DriverName" ItemStyle-Width="120">
+                                <ItemStyle Width="120px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="TripDate" DataFormatString="{0:dd/MM/yyyy}"
                                 HeaderText="Trip date" ItemStyle-Width="100" ReadOnly="True"
@@ -44,9 +45,9 @@
                             </asp:BoundField>
                             <asp:TemplateField ItemStyle-Width="60" HeaderText="Actions">
                                 <ItemTemplate>
-                                    <asp:LinkButton Text="Edit" ID="btnEdit" CommandName="EditTrip" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100" />
+                                    <asp:LinkButton Text="Authorise" ID="btnEdit" CommandName="EditTrip" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100" />
                                     <asp:LinkButton Text="Close" ID="btnCloseTrip" CommandName="CloseTrip" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100"/>
-                                    <asp:LinkButton Text="Re-Print" ID="btnDelete" CommandName="Re-Print" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100" OnClientClick="SetTarget();" />
+                                <%--    <asp:LinkButton Text="Re-Print" ID="btnDelete" CommandName="Re-Print" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100" OnClientClick="SetTarget();" />--%>
                                 </ItemTemplate>
                                 <ItemStyle Width="60px"></ItemStyle>
                             </asp:TemplateField>

@@ -24,11 +24,10 @@ namespace BMTemplate
 
         private void LoadTrips()
         {
-            grdTrips.DataSource = m_Repository.GetOpenTrips()
+            grdTrips.DataSource = m_Repository.GetOpenTrips(1)
                                     .OrderByDescending(a => a.TripId)
-                                    .Select<Trip, object>(new Func<Trip, object>(t => new { t.TripId, t.TripDate, t.EstimatedReturnDate,
-                                                                                            SHORT_DESC = t.TripDescription.PadRight(50).Substring(0, 50),
-                                                                                            t.Vehicle.RegistrationNumber, t.ProjectName })).ToList();
+                                    .Select<TripPoco, object>(new Func<TripPoco, object>(t => new { t.TripId, t.TripDate, t.EstimatedReturnDate, t.DriverName,
+                                                                                            SHORT_DESC = t.TripDescription.PadRight(50).Substring(0, 50), t.ProjectName })).ToList();
             grdTrips.DataBind();
         }
 

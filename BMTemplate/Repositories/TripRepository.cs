@@ -111,47 +111,30 @@ namespace BMTemplate.Repositories
             return 0;
         }
 
-        public List<Trip> GetOpenTrips()
+        public List<TripPoco> GetOpenTrips(int workflowId)
         {
-            var user = new UserRepository().GetUser(CurrentUser.GetUserName());
+            //var user = new UserRepository().GetUser(CurrentUser.GetUserName());
 
-            if (user == null)
-            {
-                return null;
-            }
+            //if (user == null)
+            //{
+            //    return null;
+            //}
             
-            var userId = user.UserId;
-            var OfficeTypeId = user.Office.OfficeTypeId;
-            var usersofficeid = user.OfficeId;
-            var provinceID = user.Office.ProvinceId;
-                           
-            //var offices = new OfficeRepository().GetOfficesByProv(user.Office.ProvinceId).ToIds();
-        
-            //if (OfficeTypeId == (int)OfficeTypes.PROVINCE)
-            //{
-            //    return (from o in this.m_Context.Offices
-            //            join d in this.m_Context.Drivers
-            //           on o.OfficeId equals d.OfficeId
-            //            join t in this.m_Context.Trips
-            //            on v.VehicleId equals t.VehicleId
-            //            join v in this.m_Context.Vehicles
-            //           on o.OfficeId equals v.OfficeId
-            //            where t.PostInspectionComments == null && o.ProvinceId== provinceID
-            //            select t).ToList();
-            //}
-            //if (OfficeTypeId == (int)OfficeTypes.DISTRICT)
-            //{
-            //    return (from t in this.m_Context.Trips
-            //            join v in this.m_Context.Vehicles
-            //            on t.VehicleId equals v.VehicleId
-            //            where t.PostInspectionComments == null && v.OfficeId == usersofficeid
-            //            select t).ToList();
-            //}
-            //else
-            //{
-                return (from t in this.m_Context.Trips
-                        where t.PostInspectionComments == null
-                        select t).ToList();
+            //var userId = user.UserId;
+            //var OfficeTypeId = user.Office.OfficeTypeId;
+            //var usersofficeid = user.OfficeId;
+            //var provinceID = user.Office.ProvinceId;
+           
+           var trips = (from t in this.m_Context.Trips
+                    join d in this.m_Context.Drivers
+                        on t.DriverId equals d.DriverId
+                    join cd in this.m_Context.Drivers
+                        on t.CoDriverId equals cd.DriverId 
+                    where t.WorkflowId == workflowId
+                    select new TripPoco() { TripId = t.TripId, TripDescription = t.TripDescription, ProjectName = t.ProjectName, DriverName = t.Driver.FirstName + " " + t.Driver.Surname, TripDate = t.TripDate, EstimatedReturnDate = t.EstimatedReturnDate}).ToList();
+
+            return trips;
+          
         }
 
         public List<Trip> AllClosedTrips()
