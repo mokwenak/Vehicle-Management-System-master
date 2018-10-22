@@ -102,7 +102,7 @@
                     <asp:Button ID="btnBack" runat="server" Height="32px" Text="Back"
                         Width="117px" OnClick="btnBack_Click" />&nbsp;&nbsp;
                     <asp:Button ID="btnSave" runat="server" Height="32px" OnClick="btnSave_Click"
-                        Text="Save and Print" Width="117px" OnClientClick="SetTarget();" />
+                        Text="Save" Width="117px" OnClientClick="SetTarget();" />
                 </td>
             </tr>
         </table>

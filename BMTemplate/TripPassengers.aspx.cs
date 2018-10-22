@@ -137,7 +137,7 @@ namespace BMTemplate
                 grdPassengers.Enabled = !result;
                 btnBack.Enabled = !result;
                 btnSave.Enabled = !result;
-                this.RedirectPage(Pages.TRIP_AUTHORITY_SLIP, txtTripId.Text);
+                //this.RedirectPage(Pages.TRIP_AUTHORITY_SLIP, txtTripId.Text);
 
             }
             catch (Exception ex)
