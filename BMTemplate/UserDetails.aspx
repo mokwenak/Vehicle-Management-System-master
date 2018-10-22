@@ -41,12 +41,12 @@
                             ErrorMessage="The user name has already been registered"  SetFocusOnError="true" 
                             ToolTip = "The user name has already been registered" 
                             OnServerValidate="valUsername_ServerValidate">*</asp:CustomValidator>
-                         <asp:CustomValidator ID="valADUsername" runat="server" ValidationGroup="CreateUserWizard1"
+                         <%--<asp:CustomValidator ID="valADUsername" runat="server" ValidationGroup="CreateUserWizard1"
                             ControlToValidate ="txtUserName"  ForeColor ="Red" Display="Dynamic"
                             ErrorMessage="he user does not exits in Active Directory" 
                             ToolTip = "The user does not exits in Active Directory"  SetFocusOnError="true" 
                             OnServerValidate="valADUsername_ServerValidate">*</asp:CustomValidator>
-                </td>
+                --%></td>
                 <td class="empytcolumn"></td>
                 <td class="labelcolumn">
                     <asp:Label ID="lblPersal" runat="server" AssociatedControlID="txtPersal">Employee Number:</asp:Label>

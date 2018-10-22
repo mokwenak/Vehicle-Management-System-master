@@ -118,19 +118,19 @@ namespace BMTemplate
             }
         }
 
-        protected void valADUsername_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            LdapAuthentication adAuth = new LdapAuthentication(ConfigurationManager.AppSettings["Statssa_adPath"].ToString());
+        //protected void valADUsername_ServerValidate(object source, ServerValidateEventArgs args)
+        //{
+        //    LdapAuthentication adAuth = new LdapAuthentication(ConfigurationManager.AppSettings["Statssa_adPath"].ToString());
 
-            if (!adAuth.UserExists(txtUserName.Text) && Mode == OperationMode.Add)
-            {
-                args.IsValid = false;
-            }
-            else
-            {
-                args.IsValid = true;
-            }
-        }
+        //    if (!adAuth.UserExists(txtUserName.Text) && Mode == OperationMode.Add)
+        //    {
+        //        args.IsValid = false;
+        //    }
+        //    else
+        //    {
+        //        args.IsValid = true;
+        //    }
+        //}
 
 
 
@@ -147,8 +147,10 @@ namespace BMTemplate
                 var aspUser = Membership.GetUser(txtUserName.Text);
 
                 if (aspUser == null)
+                    
                 {
-                    aspUser = Membership.CreateUser(txtUserName.Text, ConfigurationManager.AppSettings["ASP_Password"].ToString(), txtEmail.Text);
+                    string password = ConfigurationManager.AppSettings["ASP_Password"].ToString();
+                    aspUser = Membership.CreateUser(txtUserName.Text, password, txtEmail.Text);
                 }
 
 
@@ -215,7 +217,7 @@ namespace BMTemplate
                     }
                 }
             }
-            catch(Exception ex)
+            catch(MembershipCreateUserException ex)
             {
                 this.HandleException(ex);
             }

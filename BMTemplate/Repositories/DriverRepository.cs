@@ -32,7 +32,7 @@ namespace BMTemplate.Repositories
             else
             {
                 return (from v in this.m_Context.Drivers
-                        where offices.Any(new Func<int, bool>(i => i == v.OfficeId))
+                      // where offices.Any(new Func<int, bool>(i => i == v.OfficeId))
                         orderby v.FirstName, v.Surname
                         select v);
             }

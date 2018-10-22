@@ -112,24 +112,6 @@ namespace BMTemplate {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A6;
         
         /// <summary>
-        /// A8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A8;
-        
-        /// <summary>
-        /// A9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A9;
-        
-        /// <summary>
         /// A10 control.
         /// </summary>
         /// <remarks>
@@ -148,6 +130,24 @@ namespace BMTemplate {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A11;
         
         /// <summary>
+        /// A19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A19;
+        
+        /// <summary>
+        /// A20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A20;
+        
+        /// <summary>
         /// A12 control.
         /// </summary>
         /// <remarks>
@@ -155,24 +155,6 @@ namespace BMTemplate {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A12;
-        
-        /// <summary>
-        /// A13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A13;
-        
-        /// <summary>
-        /// A14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A14;
         
         /// <summary>
         /// A15 control.

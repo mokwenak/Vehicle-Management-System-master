@@ -18,7 +18,7 @@ namespace BMTemplate
         {
             if (!IsPostBack)
             {
-                LoadTrips();
+                LoadTrips(); 
             }
         }
 
@@ -26,7 +26,7 @@ namespace BMTemplate
         {
             grdTrips.DataSource = m_Repository.GetOpenTrips(1)
                                     .OrderByDescending(a => a.TripId)
-                                    .Select<TripPoco, object>(new Func<TripPoco, object>(t => new { t.TripId, t.TripDate, t.EstimatedReturnDate, t.DriverName,
+                                    .Select<TripPoco, object>(new Func<TripPoco, object>(t => new { t.TripId, t.TripDate, t.EstimatedReturnDate, t.DriverName, t.WorkflowName,
                                                                                             SHORT_DESC = t.TripDescription.PadRight(50).Substring(0, 50), t.ProjectName })).ToList();
             grdTrips.DataBind();
         }
@@ -58,6 +58,11 @@ namespace BMTemplate
                 }
                 else
                 if (e.CommandName.Equals("EditTrip"))
+                {                                     
+                    this.RedirectPage(Pages.TRIP_AUTHORISATION, e.CommandArgument.ToString());
+                }
+                else
+                if (e.CommandName.Equals("AuthoriseTrip"))
                 {
                     this.RedirectPage(Pages.TRIP_AUTHORISATION, e.CommandArgument.ToString());
                 }

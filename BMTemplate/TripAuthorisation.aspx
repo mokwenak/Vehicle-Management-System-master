@@ -138,6 +138,10 @@
                     <asp:Button ID="btn_SubmitTrip" class="Button" runat="server" Height="34px"
                         OnClick="btn_SubmitTrip_Click" Text="Next" Width="101px" />
                 </td>
+                   <td class="LabelColumn">
+                    <asp:Button ID="Button1" class="Button" runat="server" Height="34px"
+                        OnClick="btn_AuthiriseTrip_Click" Text="Authorise" Width="101px" />
+                </td>
             </tr>
         </table>
     </fieldset>

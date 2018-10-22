@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMS.WebUI", "BMTemplate\VMS.WebUI.csproj", "{A223CB2E-2A9C-4F46-A442-1504CFBAE4AC}"
 EndProject
@@ -22,7 +22,6 @@ Global
 		{A223CB2E-2A9C-4F46-A442-1504CFBAE4AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA4C90B3-918A-4E23-805D-7840B68E60C2}.Debug|Any CPU.ActiveCfg = Debug
 		{DA4C90B3-918A-4E23-805D-7840B68E60C2}.Debug|Any CPU.Build.0 = Debug
-		{DA4C90B3-918A-4E23-805D-7840B68E60C2}.Debug|Any CPU.Deploy.0 = Debug
 		{DA4C90B3-918A-4E23-805D-7840B68E60C2}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
 		{DA4C90B3-918A-4E23-805D-7840B68E60C2}.DebugLocal|Any CPU.Build.0 = DebugLocal
 		{DA4C90B3-918A-4E23-805D-7840B68E60C2}.Release|Any CPU.ActiveCfg = Release
@@ -32,15 +31,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = BMTemplate\\VMS.WebUI.csproj
-		SccProjectName1 = BMTemplate
-		SccLocalPath1 = BMTemplate
-		SccProjectUniqueName2 = VMS.Report\\VMS.Report.rptproj
-		SccProjectName2 = VMS.Report
-		SccLocalPath2 = VMS.Report
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8C1B93D-96FA-4FBF-8C83-E57D510DA95A}
 	EndGlobalSection
 EndGlobal

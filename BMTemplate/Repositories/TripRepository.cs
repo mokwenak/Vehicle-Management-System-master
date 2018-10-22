@@ -72,7 +72,8 @@ namespace BMTemplate.Repositories
             {
                 objTRP.AuthirisedBy = authBy;
                 objTRP.PreInspectionComments = preTripComment;
-               
+                objTRP.WorkflowId = 2;
+
                 this.m_Context.SaveChanges();
             }
 
@@ -130,8 +131,10 @@ namespace BMTemplate.Repositories
                         on t.DriverId equals d.DriverId
                     join cd in this.m_Context.Drivers
                         on t.CoDriverId equals cd.DriverId 
+                    join wk in this.m_Context.Workflows
+                        on t.WorkflowId equals wk.WorkflowId
                     where t.WorkflowId == workflowId
-                    select new TripPoco() { TripId = t.TripId, TripDescription = t.TripDescription, ProjectName = t.ProjectName, DriverName = t.Driver.FirstName + " " + t.Driver.Surname, TripDate = t.TripDate, EstimatedReturnDate = t.EstimatedReturnDate}).ToList();
+                    select new TripPoco() { TripId = t.TripId, TripDescription = t.TripDescription, ProjectName = t.ProjectName, WorkflowName = wk.WorkflowName, DriverName = t.Driver.FirstName + " " + t.Driver.Surname, TripDate = t.TripDate, EstimatedReturnDate = t.EstimatedReturnDate}).ToList();
 
             return trips;
           

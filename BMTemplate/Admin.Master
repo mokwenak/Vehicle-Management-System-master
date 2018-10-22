@@ -98,8 +98,9 @@
 
                         <ul>
                             <li><a href="~/TripAuthorisation.aspx" runat="server">Authorise New Trip</a></li>
-                            <li><a href="~/TripClosure.aspx" runat="server">View Open Trips</a></li>
-                            <li><a href="~/TripsHistory.aspx" runat="server">View Closed Trips</a></li>
+                            <li><a href="~/TripClosure.aspx" runat="server">Authorise Trips</a></li>
+                            <li><a href="~/TripsHistory.aspx" runat="server">Approve Trips</a></li>
+                              <li><a href="~/TripsHistory.aspx" runat="server">Track Vehicle</a></li>
                             <li><a href="~/TripsVehicleAllocated.aspx" runat="server">Allocated Vehicles</a></li>
                             <li><a href="~/TripsAvailableVehicles.aspx" runat="server">Non Allocated Vehicles</a></li>
                         </ul>

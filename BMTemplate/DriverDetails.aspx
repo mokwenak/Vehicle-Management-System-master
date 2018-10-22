@@ -47,13 +47,13 @@
                     <asp:TextBox ID="txtPersalNumber" runat="server" onkeyup="keyUP(event.keyCode)"
                         onkeydown="return isNumeric(event.keyCode);" CssClass="SmallField"
                         onpaste="return false;" MaxLength="8"></asp:TextBox>
-                    <asp:RegularExpressionValidator Display="Dynamic"
+                    <%--<asp:RegularExpressionValidator Display="Dynamic"
                         ControlToValidate="txtPersalNumber" ID="RegularExpressionValidator12"
                         ValidationExpression="^[\s\S]{8,}$" runat="server" ForeColor="Red"
                         ErrorMessage="Minimum 8 characters required for Persal No." ToolTip="Minimum 8 characters required for Persal No.">*</asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
+             --%>       <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
                         ControlToValidate="txtPersalNumber" Display="Dynamic"
-                        runat="server" ErrorMessage="Persal number is required field" ToolTip="Persal number is required field" ForeColor="Red">*</asp:RequiredFieldValidator>
+                        runat="server" ErrorMessage="Employee number is required field" ToolTip="Employee number is required field" ForeColor="Red">*</asp:RequiredFieldValidator>
                 </td>
                 <td class="LabelColumn"></td>
                 <td class="LabelColumn">

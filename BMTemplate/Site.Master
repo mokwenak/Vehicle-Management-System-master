@@ -81,23 +81,18 @@
                             <li><a id="A5" href="~/VehiclesUpdateList.aspx" runat="server">Update  Vehicle</a></li>
                             <li><a id="A6" href="~/VehiclesDeleteList.aspx" runat="server">Delete  Vehicle</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#"><font color="white"> Garage Card</font></a>
-                        <ul>
-                            <li><a id="A8" href="~/GarageCardDetails.aspx" runat="server">Capture Garage Card</a></li>
-                            <li><a id="A9" href="~/GarageCardUpdateList.aspx" runat="server">Update  Garage Card</a></li>
-
-                        </ul>
-                    </li>
+                    </li>                  
                     <li><a href="#"><font color="white">Trips</font></a>
 
-                        <ul>
+                        <ul>                             
+
                             <li><a id="A10" href="~/TripAuthorisation.aspx" runat="server">Request Vehicle</a></li>
-                            <li><a id="A11" href="~/TripClosure.aspx" runat="server">View Open Trips</a></li>
+                            <li><a id="A11" href="~/TripClosure.aspx" runat="server">Authorise Trips</a></li>
+                            <li><a id="A19" href="~/TripClosure.aspx" runat="server">Approve Trips</a></li>
+                            <li><a id="A20" href="~/TripClosure.aspx" runat="server">Track Vehicle</a></li>
                             <li><a id="A12" href="~/TripsHistory.aspx" runat="server">View Closed Trips</a></li>
-                            <li><a id="A13" href="~/TripsVehicleAllocated.aspx" runat="server">Allocated Vehicles</a></li>
-                            <li><a id="A14" href="~/TripsAvailableVehicles.aspx" runat="server">Non Allocated Vehicles</a></li>
+<%--                            <li><a id="A13" href="~/TripsVehicleAllocated.aspx" runat="server">Allocated Vehicles</a></li>
+                            <li><a id="A14" href="~/TripsAvailableVehicles.aspx" runat="server">Non Allocated Vehicles</a></li>--%>
                         </ul>
                     </li>
                     <li><a href="#"><font color="white">Accidents</font></a>

@@ -157,6 +157,52 @@ namespace BMTemplate
             //RESPCdeDD.DataBind();
         }
 
+        protected void btn_AuthiriseTrip_Click(object sender, EventArgs e)
+        {
+
+            if (!this.IsValid)
+            {
+                return;
+            }
+
+            long _driverID = 0;
+            long? CodriverID = null;
+            long vehicleId = 0;
+            long vehicleTypeId = 0;
+            long tripId = 0;
+
+            if (cboVehiclesType.SelectedIndex > 0)
+            {
+                vehicleTypeId = Convert.ToInt64(cboVehiclesType.SelectedValue);
+            }
+
+            //var card = new GarageCardRepository().GetCard(txtBoxBnkCard.Text);
+
+            //if (card != null)
+            //{
+            //    CardCID = card.GarageCardId;
+            //}
+
+            if (driverDD.SelectedIndex > 0)
+            {
+                _driverID = Convert.ToInt64(driverDD.SelectedValue);
+            }
+
+            if (coDriverDD.SelectedIndex > 0)
+            {
+                CodriverID = Convert.ToInt64(coDriverDD.SelectedValue);
+            }
+            if (!long.TryParse(this.RedirectId, out tripId))
+            {
+                this.RedirectPage(Pages.TRIP_CLOSURE);
+                return;
+            }
+            m_Repository.AuhthoriseTrip(tripId, this.UserName, string.Empty, this.UserName);
+
+            string body = string.Format("Dear {0} \r\n\r\nThere is a trip authorised waiting to your approval. Kindly logon to vehicle management system to authorise the trip. \r\n\r\nRegards", this.ManagerName);
+
+            var success = new EmailRepository().SendEmail(this.ManagerAddress, this.ManagerName, "Trip request for authorisation", body);
+        }
         protected void btn_SubmitTrip_Click(object sender, EventArgs e)
         {
             try
@@ -168,8 +214,6 @@ namespace BMTemplate
 
                 long _driverID = 0;
                 long? CodriverID = null;
-                long CardCID = 0;
-                int RESPCodeID = 0;
                 long vehicleId = 0;
                 long vehicleTypeId = 0;
 
@@ -206,7 +250,7 @@ namespace BMTemplate
                 {
                     tripId = m_Repository.AddTrip(vehicleId, _driverID, CodriverID, tripDescpText.Text, ProJTxt.Text, DateTime.ParseExact(_tripDate.Text, "dd/MM/yyyy", null), DateTime.ParseExact(returnDate.Text, "dd/MM/yyyy", null), this.UserName, startPoint.Text, destination.Text, vehicleTypeId);
 
-                    string body = string.Format("Dear {0} \r\n\r\nThere is a trip authorisation waiting to your approval. Kindly logon to vehicle management system to authorise the trip. \r\n\r\nRegards", this.ManagerName);
+                    string body = string.Format("Dear {0} \r\n\r\nThere is a trip request waiting to your athorisation. Kindly logon to vehicle management system to authorise the trip. \r\n\r\nRegards", this.ManagerName);
 
                    var success = new EmailRepository().SendEmail(this.ManagerAddress, this.ManagerName, "Trip request for authorisation", body);
                 }
