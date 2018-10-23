@@ -101,6 +101,8 @@
     <Content Include="assets\js\pagination.css" />
     <Content Include="assets\js\pagination.js" />
     <Content Include="assets\js\pagination.min.js" />
+    <Content Include="Track.aspx" />
+    <Content Include="TripApproval.aspx" />
     <Content Include="TripsVehicleAllocated.aspx" />
     <Content Include="AccidentDetails.aspx" />
     <Content Include="VehicleMaintDetails.aspx" />
@@ -301,6 +303,7 @@
     </Compile>
     <Compile Include="Enums\RoleNames.cs" />
     <Compile Include="Enums\ServiceTypes.cs" />
+    <Compile Include="Enums\Workflows.cs" />
     <Compile Include="Extensions\Trip.cs" />
     <Compile Include="FuelType.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
@@ -343,8 +346,22 @@
     <Compile Include="SupplyType.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Track.aspx.cs">
+      <DependentUpon>Track.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Track.aspx.designer.cs">
+      <DependentUpon>Track.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Trip.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TripApproval.aspx.cs">
+      <DependentUpon>TripApproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripApproval.aspx.designer.cs">
+      <DependentUpon>TripApproval.aspx</DependentUpon>
     </Compile>
     <Compile Include="TripLog.cs">
       <DependentUpon>VMSModel.tt</DependentUpon>

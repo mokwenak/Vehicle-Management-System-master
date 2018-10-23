@@ -50,6 +50,41 @@ namespace BMTemplate.Repositories
                 return false;
             }
         }
+        public bool SendEmail(string toAddresss, string toName, string cc, string subject, string body)
+        {
+            var fromAddress = new MailAddress(this.senderAddress, this.senderName);
+            var toAddress = new MailAddress(toAddresss, toName);
 
+            var _cc = new MailAddress(cc);
+
+            try
+            {
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(fromAddress.Address, senderPassword),
+                    Timeout = 20000
+                    
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    message.CC.Add(_cc);
+                    smtp.Send(message);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

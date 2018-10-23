@@ -15,42 +15,27 @@ namespace BMTemplate.Repositories
     public class VehicleRepository : BaseRepository
     {
 
-        private IQueryable<Vehicle> getAllVehicles()
+        public IQueryable<Vehicle> getAllVehicles()
         {
-            var user = new UserRepository().GetUser(CurrentUser.GetUserName());
-
-            if (user == null)
-            {
-                return null;
-            }
-
-           var userId = user.UserId;
-           var OfficeTypeId = user.Office.OfficeTypeId;
-           var usersofficeid = user.OfficeId;
-           //var offices = new OfficeRepository().GetOfficesByProv(user.Office.ProvinceId).ToIds();
-
-           //if (OfficeTypeId == (int)OfficeTypes.HEADOFFICE)
-           // {
-           //     return (from v in this.m_Context.Vehicles
-           //             orderby v.RegistrationNumber
-           //             select v);
-           // }
-           //if (OfficeTypeId == (int)OfficeTypes.DISTRICT)
-           // {
-           //     return (from v in this.m_Context.Vehicles
-           //             where  v.OfficeId== usersofficeid && (OfficeTypeId == (int)OfficeTypes.DISTRICT)
-           //             orderby v.RegistrationNumber
-           //             select v);
-           // }
-           // else
-           // {
-                return (from v in this.m_Context.Vehicles
-                        orderby v.RegistrationNumber
-                        select v);
-            //}
+           return (from v in this.m_Context.Vehicles
+                   orderby v.RegistrationNumber
+                   select v);
         }
 
+        public List<Vehicle> getAllVehiclesByModel(int modelId)
+        {
+           var modelvehicle = (from v in this.m_Context.Vehicles
+                    where v.VehicleModelId == modelId 
+                    && v.StatusId == (int)STATUS.ACTIVE
+                    orderby v.RegistrationNumber
+                    select v).ToList();
 
+            var assignedVehicles = (from t in this.m_Context.Trips select t.VehicleId).Distinct().ToList();
+
+            return modelvehicle.Where(v => !assignedVehicles.Contains(v.VehicleId)).ToList();
+
+
+        }
         public System.Collections.IList GetVehicles()
         {
             return getAllVehicles().ToList();
@@ -63,6 +48,16 @@ namespace BMTemplate.Repositories
                          select rc).ToList();
 
             return _List;
+        }
+
+        public Vehicle getAllVehiclesById(long? vehicleId)
+        {
+            return this.getAllVehicles().Where(a => a.VehicleId == vehicleId).SingleOrDefault();
+        }
+
+        public VehicleModel GetVehicleModelById(int vehicleModelId)
+        {
+            return this.m_Context.VehicleModels.Where(m => m.VehicleModelId == vehicleModelId).SingleOrDefault();
         }
 
         public System.Collections.IList GetVehicleModels(int vehicleMakeId)

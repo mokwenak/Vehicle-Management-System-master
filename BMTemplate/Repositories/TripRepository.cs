@@ -58,6 +58,7 @@ namespace BMTemplate.Repositories
             objTRP.WorkflowId = 1;
             objTRP.StartPoint = startPoint;
             objTRP.EndPoint = endPoint;
+            objTRP.VehicleTypeId = (int)vehicleTypeId;
 
             this.m_Context.Trips.Add(objTRP);
             var isSaved = this.m_Context.SaveChanges();
@@ -90,17 +91,10 @@ namespace BMTemplate.Repositories
                 objTRP.VehicleId = vehicleId;
                 objTRP.DriverId = driverId;
                 objTRP.CoDriverId = coDriverId;
-                //objTRP.GarageCardId = garageCardId;
-                //objTRP.ResponsibilityId = responsibilityId;
-                //objTRP.StartOdoMeter = odoMeter;
                 objTRP.TripDescription = tripDsrc;
                 objTRP.ProjectName = projNm;
                 objTRP.TripDate = tripDte;
                 objTRP.EstimatedReturnDate = expReturnDte;
-                //objTRP.AuthirisedBy = authBy;
-                //objTRP.Authorised = auth;
-                //objTRP.PreInspector = preTripInspct;
-                //objTRP.PreInspectionComments = preTripComment;
                 objTRP.StartPoint = startPoint;
                 objTRP.EndPoint = endPoint;
 
@@ -258,6 +252,21 @@ namespace BMTemplate.Repositories
             }
 
             return new List<Passenger>();
+        }
+
+        public bool ApproveTrip(long tripId, int vehicleMakeId, int vehicleModelId, int vehicleId, string userName)
+        {
+            Trip objTRP = this.GetTrip(tripId);
+
+            if (objTRP != null)
+            {
+                objTRP.VehicleId = vehicleId;
+                objTRP.WorkflowId = (int)Workflows.Approved;
+
+                return this.m_Context.SaveChanges() > 0;
+            }
+
+            return false;
         }
     }
 }

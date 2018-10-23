@@ -14,6 +14,7 @@ namespace BMTemplate
     public partial class TripAuthorisation : BasePage
     {
         private TripRepository m_Repository = new TripRepository();
+        private List<Vehicle> avaiableVehicle;
 
         public long TripId
         {
@@ -33,6 +34,22 @@ namespace BMTemplate
             }
         }
 
+        public List<Vehicle> AvaiableVehicle
+        {
+            get
+            {
+                if (ViewState["avaiableVehicle"] == null)
+                {
+                    return avaiableVehicle;
+                }
+                return ViewState["avaiableVehicle"] as List<Vehicle>;
+            }
+            set
+            {
+                ViewState["avaiableVehicle"] = value;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblError.Text = string.Empty;
@@ -43,6 +60,7 @@ namespace BMTemplate
                 cboVehiclesType.DataBind();
 
                 LoadDrivers(this.GetAllDrivers());
+
                 //LoadRESPCODES(new VehicleRepository().GetAllResponsibilies());
                 if (string.IsNullOrEmpty(this.RedirectId))
                 {
@@ -51,10 +69,62 @@ namespace BMTemplate
                     this._tripDate.Text = this.Today.ToString(this.DateFormat);
                     this.returnDate.Text = this.Today.ToString(this.DateFormat);
 
-                 //   GetVehiclesAvailable(this.TripId, this.Today, this.Today);
+                    //   GetVehiclesAvailable(this.TripId, this.Today, this.Today);
+
+                    Session["Mode"] = Workflows.Requested;
+
+                    btnAuthorise.Visible = false;
+                    btnApprove.Visible = false;
+
+                    btn_SubmitTrip.Visible = true;
+                    fieldSetVehicle.Visible = false;
                 }
                 else
                 {
+                    var mode = Session["Mode"];
+
+                    if (mode != null)
+                    {
+                        if ((int)mode == (int)Workflows.Requested)
+                        {
+                            btnAuthorise.Visible = true;
+                            btnApprove.Visible = false;
+                            btn_SubmitTrip.Visible = false;
+
+                            fieldSetVehicle.Visible = false;
+                        }
+                        else
+                        if ((int)mode == (int)Workflows.Authorised)
+                        {
+
+                            btnAuthorise.Visible = true;
+                            btnApprove.Visible = false;
+                            btn_SubmitTrip.Visible = false;
+
+                            fieldSetVehicle.Visible = false;
+                        }
+                        else
+                        if ((int)mode == (int)Workflows.Approved)
+                        {
+
+                            btnAuthorise.Visible = false;
+                            btnApprove.Visible = true;
+                            btn_SubmitTrip.Visible = false;
+
+                            fieldSetVehicle.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        btnAuthorise.Visible = false;
+                        btnApprove.Visible = false;
+                        btn_SubmitTrip.Visible = true;
+
+                        fieldSetVehicle.Visible = false;
+
+                    }
+
+
                     long tripId;
 
                     if (!long.TryParse(this.RedirectId, out tripId))
@@ -79,8 +149,8 @@ namespace BMTemplate
                     this.returnDate.Text = trip.EstimatedReturnDate.ToString(this.DateFormat);
                     //VehiclesDD.SelectedValue = trip.VehicleId.ToString();
                     //VehiclesDD.SelectedValue = trip.VehicleId.ToString();
-                    //driverDD.SelectedValue = trip.DriverId.ToString();
-                    //RESPCdeDD.SelectedValue = trip.ResponsibilityId.ToString();
+                    driverDD.SelectedValue = trip.DriverId.ToString();
+                    cboVehiclesType.SelectedValue = trip.VehicleTypeId.ToString();
                     //ODDOMeter.Text = trip.StartOdoMeter.ToString();
                     ProJTxt.Text = trip.ProjectName;
                     tripDescpText.Text = trip.TripDescription;
@@ -94,8 +164,16 @@ namespace BMTemplate
                     {
                         coDriverDD.SelectedValue = trip.CoDriverId.ToString();
                     }
-                    //VehicleDetails(trip.VehicleId);
-                    //txtBoxBnkCard.Text = trip.GarageCard?.CardNumber ?? string.Empty;
+
+                    if ((int)mode == (int)Workflows.Approved)
+                    {
+
+                        cboVehicleMake.DataSource = new VehicleRepository().GetVehicleMake();
+                        cboVehicleMake.DataBind();
+
+                        //VehicleDetails(trip.VehicleId);
+                        //txtBoxBnkCard.Text = trip.GarageCard?.CardNumber ?? string.Empty;
+                    }
 
                 }
             }
@@ -202,6 +280,11 @@ namespace BMTemplate
             string body = string.Format("Dear {0} \r\n\r\nThere is a trip authorised waiting to your approval. Kindly logon to vehicle management system to authorise the trip. \r\n\r\nRegards", this.ManagerName);
 
             var success = new EmailRepository().SendEmail(this.ManagerAddress, this.ManagerName, "Trip request for authorisation", body);
+
+            if(success)
+            {
+                this.ShowMessage("The trip has been authorised");
+            }
         }
         protected void btn_SubmitTrip_Click(object sender, EventArgs e)
         {
@@ -272,8 +355,46 @@ namespace BMTemplate
                 this.HandleException(ex);
             }
         }
+        
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            
+            long tripId = 0;
+            int vehicleMakeId = 0, vehicleModelId = 0, vehicleId = 0;
 
-       
+            
+            if (cboVehicleMake.SelectedIndex > 0)
+            {
+                vehicleMakeId = Convert.ToInt32(cboVehicleMake.SelectedValue);
+            }
+
+            if (cboVehicleModel.SelectedIndex > 0)
+            {
+                vehicleModelId = Convert.ToInt32(cboVehicleModel.SelectedValue);
+            }
+            if (cboVechile.SelectedIndex > 0)
+            {
+                vehicleId = Convert.ToInt32(cboVechile.SelectedValue);
+            }
+            if (!long.TryParse(this.RedirectId, out tripId))
+            {
+                this.RedirectPage(Pages.TRIP_CLOSURE);
+                return;
+            }
+
+            m_Repository.ApproveTrip(tripId, vehicleMakeId , vehicleModelId, vehicleId, this.UserName);
+
+            string body = string.Format("Dear {0} \r\n\r\nThere vehicle request has been approved. You are allocated {1} with registration number: {2}. Use the the reference number: {3} on your mobile app. \r\n\r\nEnjoy your trip. \r\n\r\nRegards", this.DriverName, cboVehicleModel.SelectedItem.Text, cboVechile.SelectedItem.Text, tripId);
+
+            var success = new EmailRepository().SendEmail(this.Driver, this.DriverName, this.ManagerAddress, "Trip request appoved", body);
+
+            if (success)
+            {
+                this.ShowMessage("The trip has been approved");
+            }
+
+        }
+        
         private void VehicleDetails(long vehId)
         {
             //    VehModelTxt.Text = string.Empty;
@@ -334,6 +455,44 @@ namespace BMTemplate
             catch(Exception ex)
             {
                 this.HandleException(ex);
+            }
+        }
+
+        protected void cboVehicleMake_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboVehicleMake.SelectedIndex > 0)
+            {
+                cboVehicleModel.DataSource = new VehicleRepository().GetVehicleModels(Convert.ToInt32(cboVehicleMake.SelectedValue));
+                cboVehicleModel.DataBind();
+                cboVehicleModel.Items.Insert(0, "Select");
+            }
+        }
+
+        protected void cboVehicleModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboVehicleModel.SelectedIndex > 0)
+            {
+
+                 var avaiableVehicle = new VehicleRepository().getAllVehiclesByModel(Convert.ToInt32(cboVehicleModel.SelectedItem.Value));
+
+                cboVechile.DataSource = avaiableVehicle.Select(a => new { VehicleId = a.VehicleId, RegistrationNumber = a.RegistrationNumber});
+                cboVechile.DataBind();
+                cboVechile.Items.Insert(0, "Select");
+            }
+        }
+
+        protected void cboVechile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboVechile.SelectedIndex > 0)
+            {
+                var selectVehicle = new VehicleRepository().getAllVehicles().Where(a => a.RegistrationNumber.Contains(cboVechile.SelectedItem.Text)).SingleOrDefault();
+
+                if (selectVehicle != null)
+                {
+                    txtCurrentOdoMeter.Text = selectVehicle.CurrentOdoMeter.ToString();
+                    txtVehicleCondition.Text = selectVehicle.VehicleCondition;
+                    txtRegistrationNo.Text = selectVehicle.VINNumber;
+                }
             }
         }
     }

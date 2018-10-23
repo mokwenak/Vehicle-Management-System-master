@@ -148,15 +148,6 @@ namespace BMTemplate {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A20;
         
         /// <summary>
-        /// A12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A12;
-        
-        /// <summary>
         /// A15 control.
         /// </summary>
         /// <remarks>

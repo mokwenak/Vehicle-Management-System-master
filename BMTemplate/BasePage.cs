@@ -54,6 +54,23 @@ namespace BMTemplate
             }
         }
 
+        protected string Driver
+        {
+            get
+            {
+                return "mokwenakgwete@yahoo.com";
+            }
+        }
+
+        protected string DriverName
+        {
+            get
+            {
+                return "Mr Kgwete";
+            }
+        }
+
+
         public DateTime Today
         {
             get

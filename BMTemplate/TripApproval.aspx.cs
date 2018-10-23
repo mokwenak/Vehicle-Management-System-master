@@ -1,16 +1,15 @@
-﻿using System;
+﻿using BMTemplate.Enums;
+using BMTemplate.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Data;
 using System.Web.UI.WebControls;
-using BMTemplate.Repositories;
-using BMTemplate.Enums;
 
 namespace BMTemplate
 {
-    public partial class TripClosure : BasePage
+    public partial class TripApproval : BasePage
     {
 
         private TripRepository m_Repository = new TripRepository();
@@ -18,16 +17,23 @@ namespace BMTemplate
         {
             if (!IsPostBack)
             {
-                LoadTrips(); 
+                LoadTrips();
             }
         }
 
         private void LoadTrips()
         {
-            grdTrips.DataSource = m_Repository.GetOpenTrips(1)
+            grdTrips.DataSource = m_Repository.GetOpenTrips(2)
                                     .OrderByDescending(a => a.TripId)
-                                    .Select<TripPoco, object>(new Func<TripPoco, object>(t => new { t.TripId, t.TripDate, t.EstimatedReturnDate, t.DriverName, t.WorkflowName,
-                                                                                            SHORT_DESC = t.TripDescription.PadRight(50).Substring(0, 50), t.ProjectName })).ToList();
+                                    .Select<TripPoco, object>(new Func<TripPoco, object>(t => new {
+                                        t.TripId,
+                                        t.TripDate,
+                                        t.EstimatedReturnDate,
+                                        t.DriverName,
+                                        t.WorkflowName,
+                                        SHORT_DESC = t.TripDescription.PadRight(50).Substring(0, 50),
+                                        t.ProjectName
+                                    })).ToList();
             grdTrips.DataBind();
         }
 
@@ -47,23 +53,19 @@ namespace BMTemplate
         {
             try
             {
+
                 if (e.CommandName.Equals("CloseTrip"))
                 {
                     this.RedirectPage(Pages.TRIP_LOGS, e.CommandArgument.ToString());
                 }
                 else
-                if (e.CommandName.Equals("EditTrip"))
+                if (e.CommandName.Equals("ApproveTrip"))
                 {
-                    Session["Mode"] = Workflows.Requested;
-                    this.RedirectPage(Pages.TRIP_AUTHORISATION, e.CommandArgument.ToString());
-                }
-                else
-                if (e.CommandName.Equals("AuthoriseTrip"))
-                {
-                    Session["Mode"] = Workflows.Authorised;
+                    Session["Mode"] = Workflows.Approved;
                     this.RedirectPage(Pages.TRIP_AUTHORISATION, e.CommandArgument.ToString());
                 }
             }
+
             catch (Exception ex)
             {
                 this.HandleException(ex);

@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="~/TripClosure.aspx.cs" Inherits="BMTemplate.TripClosure" %>
-
+﻿<%@ Page Language="C#"  MasterPageFile="~/Site.Master"  AutoEventWireup="true" CodeBehind="TripApproval.aspx.cs"  Inherits="BMTemplate.TripApproval" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript">
         function SetTarget() {
@@ -49,10 +48,9 @@
                             </asp:BoundField>
                             <asp:TemplateField ItemStyle-Width="60" HeaderText="Actions">
                                 <ItemTemplate>
-                                    <asp:LinkButton Text="Authorise" ID="btnEdit" CommandName="AuthoriseTrip" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100" />
+                                    <asp:LinkButton Text="Approve" ID="btnEdit" CommandName="ApproveTrip" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100" />
                                     <asp:LinkButton Text="Close" ID="btnCloseTrip" CommandName="CloseTrip" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100"/>
-                                <%--    <asp:LinkButton Text="Re-Print" ID="btnDelete" CommandName="Re-Print" CommandArgument='<%# Bind("TripId") %>' runat="server" ItemStyle-Width="100" OnClientClick="SetTarget();" />--%>
-                                </ItemTemplate>
+                                  </ItemTemplate>
                                 <ItemStyle Width="60px"></ItemStyle>
                             </asp:TemplateField>
                         </Columns>

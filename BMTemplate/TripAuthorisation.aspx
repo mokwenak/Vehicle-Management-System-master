@@ -124,24 +124,83 @@
                 </td>
                 <td class="FieldColumn">
                     <asp:DropDownList ID="cboVehiclesType" runat="server" CssClass="MediumField" AutoPostBack="True" AppendDataBoundItems="true"
-                        DataTextField="VehicleTypeName" DataValueField="VehicleTypeId">
+                        DataTextField="VehicleTypeName" DataValueField="VehicleTypeId" Height="16px" Width="186px" >
                         <asp:ListItem Text="Select " Value="0" />
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="cboVehiclesType"
                         Display="Dynamic" ErrorMessage="Vehicle Type is required" ForeColor="Red" InitialValue="0"
                         ToolTip="Vehicle Type is required">*</asp:RequiredFieldValidator>
-                </td>               
+                </td>     
+               
             </tr>
-
+        </table>
+    </fieldset>
+      <fieldset id="fieldSetVehicle" runat="server" style="border-radius: 5px; box-shadow: 5px 5px 2px #888888;">
+        <legend>Assign Vehicle</legend>
+        <table class="Normaltable">            
+             <tr>
+                 <td class="LabelColumn" style="width: 191px">Vehicle Make</td>
+                 <td class="FieldColumn">
+                    <asp:DropDownList ID="cboVehicleMake" runat="server" AutoPostBack="True" CssClass="MediumField" DataTextField="VehicleMakeName" DataValueField="VehicleMakeId"
+                        Height="16px" Width="186px" OnSelectedIndexChanged="cboVehicleMake_SelectedIndexChanged">
+                        <asp:ListItem Text="Select" Value="0" />
+                    </asp:DropDownList>
+                </td>
+                 <td class="LabelColumn" style="width: 191px">Vehicle Model</td>
+                 <td class="FieldColumn">
+                    <asp:DropDownList ID="cboVehicleModel" runat="server" AutoPostBack="True" CssClass="MediumField" DataTextField="VehicleModelName" DataValueField="VehicleModelId"
+                        Height="16px" Width="186px" OnSelectedIndexChanged="cboVehicleModel_SelectedIndexChanged" >
+                        <asp:ListItem Text="Select" Value="0" />
+                    </asp:DropDownList>
+                </td>
+            </tr>
             <tr>
+                 <td class="LabelColumn" style="width: 191px">Vehicle</td>
+                 <td class="FieldColumn">
+                    <asp:DropDownList ID="cboVechile" runat="server" AutoPostBack="True" CssClass="MediumField" DataTextField="RegistrationNumber" DataValueField="VehicleId"
+                        Height="16px" Width="186px" OnSelectedIndexChanged="cboVechile_SelectedIndexChanged">
+                        <asp:ListItem Text="Select" Value="0" />
+                    </asp:DropDownList>
+                </td>
+                <td class="LabelColumn" style="width: 191px">VIN Number</td>
+                 <td class="FieldColumn">
+                    <asp:TextBox ID="txtRegistrationNo" Enabled="false" runat="server" CssClass="MediumField" Height="16px" Width="186px"/>
+                    
+                </td>
+            </tr>
+            <tr>
+                 <td class="LabelColumn" style="width: 191px">Vehicle Condition</td>
+                 <td class="FieldColumn">
+                     <asp:TextBox ID="txtVehicleCondition" Enabled="false" runat="server" CssClass="MediumField" Height="16px" Width="186px"/>
+                </td>
+                <td class="LabelColumn" style="width: 191px">Odormeter Readings</td>
+                 <td class="FieldColumn">
+                    <asp:TextBox ID="txtCurrentOdoMeter" Enabled="false" runat="server" CssClass="MediumField" Height="16px" Width="186px"/>                    
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+      <fieldset style="border-radius: 5px; box-shadow: 5px 5px 2px #888888;">
+        <legend>Action</legend>
+        <table class="Normaltable">
+            <tr>
+                <td></td>
+            </tr>
+             <tr>
                 <td class="LabelColumn">
                     <asp:Button ID="btn_SubmitTrip" class="Button" runat="server" Height="34px"
                         OnClick="btn_SubmitTrip_Click" Text="Next" Width="101px" />
-                </td>
-                   <td class="LabelColumn">
-                    <asp:Button ID="Button1" class="Button" runat="server" Height="34px"
+               
+                    <asp:Button ID="btnAuthorise" class="Button" runat="server" Height="34px"
                         OnClick="btn_AuthiriseTrip_Click" Text="Authorise" Width="101px" />
+                     
+                    <asp:Button ID="btnApprove" class="Button" runat="server" Height="34px"
+                        OnClick="btnApprove_Click" Text="Approve Trip" Width="101px" />
                 </td>
+            </tr>
+            <tr>
+                <td></td>
             </tr>
         </table>
     </fieldset>
